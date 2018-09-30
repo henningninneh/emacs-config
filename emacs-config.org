@@ -1,0 +1,18 @@
+#+TITLE: Emacs Configuration
+
+This is the main configuration file for Emacs. It is called in init.el. The file is written in org-mode, and parsed to elisp upon loading, thanks to org-babel.
+
+This file contains only the most general configurations, namely in the first part.
+
+More specific configurations are delegated to individual configuration files. These are called in the subsequent sections.
+
+* General configuration
+
+
+* Key-bindings
+
+#+BEGIN_SRC emacs-lisp
+
+(org-babel-load-file "key-bindings.org")
+
+#+END_SRC
