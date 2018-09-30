@@ -1,0 +1,129 @@
+#+TITLE: Local Settings
+
+Stuff that shouldn't be synchronized across computers goes here.
+
+* Use gls instead of ls in dired
+Useful on Mac and BSDs
+
+#+BEGIN_SRC emacs-lisp
+(setq insert-directory-program (executable-find "gls"))
+#+END_SRC emacs-lisp
+
+* TODO Path to RefTeX bibliography
+Tell RefTeX where the bibliography files are
+
+#+begin_src emacs-lisp :tangle no
+    (setq reftex-default-bibliography
+    '("PATH TO CLOUD-SHARED BIBIOGRAPHY"))
+#+end_src
+* Local org-mode configuration
+
+The following are machine-dependent configurations for org-mode
+
+** TODO HTML export settings
+ Create =html= files form the =org= sources, to help with
+ documentation. To set up org-mode for publishing projects to HTML you
+ will need to change these settings.
+
+ #+source: html-export-settings
+ #+begin_src emacs-lisp
+   (setq org-publish-project-alist
+          '(("org"
+             :base-directory "~/.emacs.d/"
+             :publishing-directory "~/sites/exported/"
+             :publishing-function org-html-publish-to-html
+             :auto-sitemap t            
+             :sitemap-filename "index.org"
+             :sitemap-title "TITLE"
+             :section-numbers t
+             :table-of-contents t
+             :html-head "<link rel=\"stylesheet\"
+                    href=\"PATH-TO-STYLESHEET/STYLESHEET.css\"
+                    type=\"text/css\"/>"            )))
+  
+   (setq org-html-postamble nil)
+  
+ #+end_src
+** TODO Archive Settings
+     Where archived projects and tasks go.
+
+ #+begin_src emacs-lisp :tangle no
+   (setq org-archive-location "~/cloud/org/archive.org::From %s")
+ #+end_src
+** TODO Mobile Settings
+    Sync orgmode files with Dropbox and mobile
+
+ #+begin_src emacs-lisp :tangle no
+    ;; Set to the location of your Org files on your local system
+    (setq org-directory "~/cloud/org")
+    ;; Set to <your Dropbox root directory>/MobileOrg.
+    (setq org-mobile-directory "~/cloud/MobileOrg")
+    ;; Set to the files (or directory of files) you want sync'd
+    (setq org-agenda-files (quote ("~/cloud/org")))
+    ;; Set to the name of the file where new notes will be stored
+    (setq org-mobile-inbox-for-pull "~/cloud/org/from-mobile.org")
+ #+end_src
+** TODO XeLaTeX and pdfLaTeX Export Settings
+    Configure org-mode to export directly to PDF using xelatex,
+    compiling the bibliography as it goes, with my preferred setup in
+    each case. There is a good deal of local stuff in this section. The
+    required style files used below are available at
+    https://github.com/kjhealy/latex-custom-kjh. You may need to adjust
+    or remove some of these settings depending on your preferences and
+    local configuration.
+
+ #+begin_src emacs-lisp
+  
+     ;; Choose either listings or minted for exporting source code blocks.
+     ;; Using minted (as here) requires pygments be installed. To use the
+     ;; default listings package instead, use
+     ;; (setq org-latex-listings t)
+     ;; and change references to "minted" below to "listings"
+     (setq org-latex-listings 'minted)
+    
+     ;; default settings for minted code blocks.
+     ;; bg will need to be defined in the preamble of your document. It's defined in  org-preamble-xelatex.sty below.
+     (setq org-latex-minted-options
+           '(;("frame" "single")
+             ("bgcolor" "bg") 
+             ("fontsize" "\\small")
+             ))
+    
+   ;; turn off the default toc behavior; deal with it properly in headers to files.
+   (defun org-latex-no-toc (depth)  
+     (when depth
+         (format "%% Org-mode is exporting headings to %s levels.\n"
+                 depth)))
+   (setq org-latex-format-toc-function 'org-latex-no-toc)
+  
+   ;; note the insertion of the \input statement for the vc information 
+   (add-to-list 'org-latex-classes
+                  '("memarticle"
+                    "\\documentclass[11pt,oneside,article]{memoir}\n\\input{vc} % vc package"
+                     ("\\section{%s}" . "\\section*{%s}")
+                     ("\\subsection{%s}" . "\\subsection*{%s}")
+                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  
+   (add-to-list 'org-latex-classes
+                  '("membook"
+                    "\\documentclass[11pt,oneside]{memoir}\n\\input{vc} % vc package"
+                    ("\\chapter{%s}" . "\\chapter*{%s}")
+                    ("\\section{%s}" . "\\section*{%s}")
+                    ("\\subsection{%s}" . "\\subsection*{%s}")
+                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+   
+   ;; LaTeX compilation command. For orgmode docs we just always use xelatex for convenience.
+   ;; You can change it to pdflatex if you like, just remember to make the adjustments to the packages-alist below.
+   (setq org-latex-pdf-process '("latexmk -pdflatex='xelatex -synctex=1 --shell-escape' -pdf %f"))
+  
+   ;; Default packages included in the tex file. As before, org-preamble-xelatex is part of latex-custom-kjh.
+   ;; There's org-preamble-pdflatex as well, if you wish to use that instead.
+   (setq org-latex-default-packages-alist nil)     
+   (setq org-latex-packages-alist
+           '(("minted" "org-preamble-xelatex" t)
+             ("" "graphicx" t)
+             ("" "longtable" nil)
+             ("" "float" ))) 
+ #+end_src
