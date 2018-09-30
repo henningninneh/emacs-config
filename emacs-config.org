@@ -1,18 +1,70 @@
 #+TITLE: Emacs Configuration
 
-This is the main configuration file for Emacs. It is called in init.el. The file is written in org-mode, and parsed to elisp upon loading, thanks to org-babel.
+This is the main configuration file for Emacs. It is called in
+init.el. The file is written in org-mode, and parsed to elisp upon
+loading, thanks to org-babel.
 
-This file contains only the most general configurations, namely in the first part.
+This file contains only the most general configurations, namely in the
+first section. The second section pulls various packages from the
+repository and installs them (only on the first run). More specific
+configurations are delegated to individual configuration files. These
+are called in the subsequent sections.
 
-More specific configurations are delegated to individual configuration files. These are called in the subsequent sections.
+The configuration is a strongly based on a "manual fork" from
+[[https://github.com/kjhealy/emacs-starter-kit][Kieran Healy's starter kit for the social sciences]].
 
 * General configuration
 
+These packages should be loaded on startup rather than auto-loaded,
+because I need them always.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'cl-lib) ; common lisp compatibility
+  (require 'saveplace) ; put cursor where it was last when visiting file
+  (require 'ffap) ; replaces certain key bindings for finding files with
+		  ; commands that provide more sensible defaults.
+  (require 'uniquify) ; make buffer names unique
+  (require 'ansi-color) ; translate ANSI SGR escape sequences for Emacs 
+  (require 'recentf) ; find files from a list of recently opened files
+#+END_SRC
+
+
+Set up several emacs package repositories.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+  (setq package-enable-at-startup nil)
+  (setq package-archives '( ;("melpa"     . "http://melpa.org/packages/")
+			   ("org"       . "http://orgmode.org/elpa/")
+			   ("gnu"       . "http://elpa.gnu.org/packages/")
+			   ("marmalade" . "https://marmalade-repo.org/packages/")))
+  (package-initialize)
+#+END_SRC
+
+* Install stuff
+
+Install a number of default packages on first run.
+
+#+BEGIN_SRC emacs-lisp tangle:no
+(org-babel-load-file "~/.emacs.d/install-stuff.org")
+#+END_SRC
+
+
+Install use-package, so we can load packages on demand rather than on
+startup.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+#+END_SRC
 
 * Key-bindings
 
 #+BEGIN_SRC emacs-lisp
-
-(org-babel-load-file "key-bindings.org")
-
+(org-babel-load-file "~/.emacs.d/key-bindings.org")
 #+END_SRC
+
+* TODO Stuff that needs to be improved
++ [ ] I'm not sure if cl-lib actually works
++ [ ] I had to comment out MELPA, because it wouldn't connect (just hangs).
