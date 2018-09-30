@@ -1,0 +1,180 @@
+#+TITLE: Org-Mode Configuration
+
+This file contains the configuration for org-mode, the swiss army
+knife of productivity.
+
+For more information on org-mode check out [[http://orgmode.org/worg/][worg]].
+
+* Ebib and citation settings
+ebib is a bibtex database manager that works inside emacs. It can talk
+to org-mode. See [[http://orgmode.org/worg/org-tutorials/org-latex-export.html#sec-17_2][this Worg tutorial]] for details.
+
+#+begin_src emacs-lisp :tangle no
+    (org-add-link-type "ebib" 'ebib)
+  
+   (org-add-link-type 
+     "cite" 'ebib
+     (lambda (path desc format)
+       (cond
+        ((eq format 'latex)
+         (if (or (not desc) (equal 0 (search "cite:" desc)))
+               (format "\\cite{%s}" path)
+               (format "\\cite[%s]{%s}" desc path)
+               )))))
+  
+   (org-add-link-type 
+     "parencite" 'ebib
+     (lambda (path desc format)
+       (cond
+        ((eq format 'latex)
+         (if (or (not desc) (equal 0 (search "parencite:" desc)))
+               (format "\\parencite{%s}" path)
+               (format "\\parencite[%s]{%s}" desc path)
+  )))))
+  
+  (org-add-link-type 
+     "textcite" 'ebib
+     (lambda (path desc format)
+       (cond
+        ((eq format 'latex)
+         (if (or (not desc) (equal 0 (search "textcite:" desc)))
+               (format "\\textcite{%s}" path)
+               (format "\\textcite[%s]{%s}" desc path)
+  )))))
+  
+  (org-add-link-type 
+     "autocite" 'ebib
+     (lambda (path desc format)
+       (cond
+        ((eq format 'latex)
+         (if (or (not desc) (equal 0 (search "autocite:" desc)))
+               (format "\\autocite{%s}" path)
+           (format "\\autocite[%s]{%s}" desc path)
+  )))))
+  
+  (org-add-link-type 
+   "footcite" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "footcite:" desc)))
+           (format "\\footcite{%s}" path)
+         (format "\\footcite[%s]{%s}" desc path)
+         )))))
+  
+  (org-add-link-type 
+   "fullcite" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "fullcite:" desc)))
+           (format "\\fullcite{%s}" path)
+         (format "\\fullcite[%s]{%s}" desc path)
+         )))))
+  
+  (org-add-link-type 
+   "citetitle" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "citetitle:" desc)))
+           (format "\\citetitle{%s}" path)
+         (format "\\citetitle[%s]{%s}" desc path)
+         )))))
+  
+  (org-add-link-type 
+   "citetitles" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "citetitles:" desc)))
+           (format "\\citetitles{%s}" path)
+         (format "\\citetitles[%s]{%s}" desc path)
+         )))))
+  
+  (org-add-link-type 
+     "headlessfullcite" 'ebib
+     (lambda (path desc format)
+       (cond
+        ((eq format 'latex)
+         (if (or (not desc) (equal 0 (search "headlessfullcite:" desc)))
+               (format "\\headlessfullcite{%s}" path)
+               (format "\\headlessfullcite[%s]{%s}" desc path)
+  )))))   
+#+end_src
+
+* Babel Settings
+Configure org-mode so that when you edit source code in an indirect
+buffer (with C-c '), the buffer is opened in the current window. That
+way, your window organization isn't broken when switching.
+
+#+begin_src emacs-lisp
+  (setq org-src-window-setup 'current-window)
+#+end_src
+
+* Markdown exporter
+#+begin_src emacs-lisp
+(require 'ox-md)
+#+end_src emacs-lisp
+* Auto completion
+#+begin_src emacs-lisp
+(setq org-completion-use-ido t)
+#+end_src emacs-lisp
+* Make windmove work in org-mode
+Otherwise the org-keybindings will override windmove.
+
+#+begin_src emacs-lisp
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+;; (if window-system (require 'org-mouse))
+#+end_src
+* Make yasnippet work in org-mode
+#+begin_src emacs-lisp
+;;  (defun yas/org-very-safe-expand ()
+;;    (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+(defun yas-org-very-safe-expand ()
+  (let ((yas-fallback-behavior 'return-nil))
+    (and (fboundp 'yas-expand) (yas-expand))))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-to-list 'org-tab-first-hook
+                         'yas-org-very-safe-expand)
+            ))
+#+end_src
+
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (local-set-key "\M-\C-n" 'outline-next-visible-heading)
+              (local-set-key "\M-\C-p" 'outline-previous-visible-heading)
+              (local-set-key "\M-\C-u" 'outline-up-heading)
+              ;; table
+              (local-set-key "\M-\C-w" 'org-table-copy-region)
+              (local-set-key "\M-\C-y" 'org-table-paste-rectangle)
+              (local-set-key "\M-\C-l" 'org-table-sort-lines)
+              ;; display images
+              (local-set-key "\M-I" 'org-toggle-iimage-in-org)
+              ;; yasnippet (using the new org-cycle hooks)
+              ;;(make-variable-buffer-local 'yas/trigger-key)
+              ;;(setq yas/trigger-key [tab])
+              ;;(add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+              ;;(define-key yas/keymap [tab] 'yas/next-field)
+              ))
+#+end_src
+
+* Code block fontification
+Display the contents of code blocks in Org-mode files using the
+major-mode of the code; change the behavior of =TAB= to as if it were
+used in the appropriate major mode.
+
+#+begin_src emacs-lisp
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+#+end_src
+
+#+begin_src emacs-lisp
+  (message "Org-Mode configuration loaded.")
+#+end_src

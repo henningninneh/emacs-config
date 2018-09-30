@@ -1,0 +1,107 @@
+#+TITLE: Auto-completion settings
+
+We use yasnippet and compay mode.
+
+Yasnippet is a snippet expansion system for Emacs. It uses short
+phrases and the tab key to trigger the insertion of frequently-used
+snippets of code or text in your document.
+
+[[http://company-mode.github.io/][Company]] is a text completion framework for Emacs. The name stands for
+"complete anything". It uses pluggable back-ends and front-ends to
+retrieve and display completion candidates.
+
+Completion will start automatically after you type a few letters. Use
+M-n and M-p to select, <return> to complete or <tab> to complete the
+common part. Search through the completions with C-s, C-r and
+C-o. Press M-(digit) to quickly complete with one of the first 10
+candidates.
+
+* Yasnippet
+** Load yasnippet and some snippet bundles
+
+#+begin_src emacs-lisp
+  (setq yas-snippet-dirs
+        '("~/.emacs.d/snippets"                 ;; personal snippets
+  ;        "/path/to/some/collection/" ;; foo-mode and bar-mode snippet
+  ;        collection "/path/to/yasnippet/yasmate/snippets" ;; the
+  ;        yasmate collection
+          ))
+    (require 'yasnippet)
+    (yas-global-mode 1)
+#+end_src
+
+
+** Tweaking yasnippet's behavior
+
+#+begin_src emacs-lisp :tangle yes
+(defun check-expansion ()
+    (save-excursion
+      (if (looking-at "\\_>") t
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "->") t nil)))))
+
+  (defun do-yas-expand ()
+    (let ((yas-fallback-behavior 'return-nil))
+      (yas-expand)))
+
+  (defun tab-indent-or-complete ()
+    (interactive)
+    (if (minibufferp)
+        (minibuffer-complete)
+      (if (or (not yas-minor-mode)
+              (null (do-yas-expand)))
+          (if (check-expansion)
+              (company-complete-common)
+            (indent-for-tab-command)))))
+
+  (global-set-key [tab] 'tab-indent-or-complete)
+#+end_src
+
+* Company Mode
+Auto-completion of text and code. 
+
+We use the `:with` keyword to include dabbrev in every backend, which
+gives us completion from everything that's in the buffer (and other
+open buffers).
+
+#+begin_src emacs-lisp
+
+;;Use C-TAB to complete. We put this in eval-after-load 
+;; because otherwise some modes will try to override our settings.
+(require 'company)
+;; set to 0 to prevent completion starting automatically 
+;; (setq company-idle-delay 0)
+;; cancel if input doesn't match
+(setq company-require-match nil)
+;; complete using C-TAB
+(global-set-key (kbd "<C-tab>") 'company-complete)
+;; use C-n and C-p to cycle through completions
+;; (define-key company-mode-map (kbd "<tab>") 'company-complete)
+(define-key company-active-map (kbd "C-n") 'company-select-next)
+(define-key company-active-map (kbd "<tab>") 'company-complete-common)
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
+(define-key company-active-map (kbd "<backtab>") 'company-select-previous)
+;; enable math completions
+(require 'company-math)
+;; company-mode completions for ess
+;; (require 'company-ess)
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+;;(add-to-list 'company-backends 'company-math-symbols-latex)
+;; put company-capf at the beginning of the list
+(require 'company-capf)
+(setq company-backends
+      (delete-dups (cons 'company-capf company-backends)))
+
+;; ;; disable dabbrev
+;; (delete 'company-dabbrev company-backends)
+;; (delete 'company-dabbrev-code company-backends)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; completion for kill ring history
+(require 'browse-kill-ring)
+(browse-kill-ring-default-keybindings)
+
+#+end_src

@@ -1,0 +1,58 @@
+#+TITLE: Mode Configurations
+
+This file contains configurations for different modes.
+
+* Dired config
+** Dired extensions
+#+begin_src emacs-lisp
+  (load "dired-x")
+#+end_src
+
+** Visit all marked files using. 
+Bound to the "F" key.
+#+begin_src emacs-lisp
+  (eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map "F" 'my-dired-find-file)
+     (defun my-dired-find-file (&optional arg)
+       "Open each of the marked files, or the file under the point, or when prefix arg, the next N files "
+       (interactive "P")
+       (let* ((fn-list (dired-get-marked-files nil arg)))
+         (mapc 'find-file fn-list)))))
+#+end_src
+
+** Stripe dired buffers
+#+begin_src emacs-lisp
+(require 'stripe-buffer)
+(add-hook 'org-mode-hook 'org-table-stripes-enable)
+(add-hook 'dired-mode-hook 'stripe-listify-buffer)  
+#+end_src
+* Pandoc config 
+A pandoc menu for markdown and tex files. 
+
+#+begin_src emacs-lisp 
+  (load "pandoc-mode")
+  (add-hook 'markdown-mode-hook 'pandoc-mode)
+  (add-hook 'TeX-mode-hook 'pandoc-mode)
+  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+  (global-set-key (kbd "C-c p") 'pandoc-main-hydra/body)
+#+end_src
+
+* Polymode config (INACTIVE)
+Polymode is a package that supports multiple modes inside a single
+buffer. It is aimed particularly at literate programming approaches
+and supports, e.g., R and markdown in a single =.Rmd= file. So it is
+very useful with knitr in R, given that ESS does not yet fully support
+=.Rmd= files.
+
+#+begin_src emacs-lisp :tangle no
+  (require 'poly-R)
+  (require 'poly-markdown)
+  ;;; polymode + markdown
+  (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+
+  ;;; polymode + R
+  (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+#+end_src
