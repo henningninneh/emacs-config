@@ -59,12 +59,28 @@ startup.
     (package-install 'use-package))
 #+END_SRC
 
-* Key-bindings
-
+* Key-bindings and Usability
 #+BEGIN_SRC emacs-lisp
 (org-babel-load-file "~/.emacs.d/key-bindings.org")
 #+END_SRC
 
+* Theming and Usability
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/theming.org")
+#+END_SRC
+
 * TODO Stuff that needs to be improved
++ [ ] Dired: Does moving trash work?
 + [ ] I'm not sure if cl-lib actually works
 + [ ] I had to comment out MELPA, because it wouldn't connect (just hangs).
++ [X] Key Bindings
++ [ ] Usability and Theming
++ [ ] Auto-completion
++ [ ] Org-Mode
++ [ ] Eshell
++ [ ] LaTeX
++ [ ] Text
++ [ ] ESS
++ [ ] Custom Functions
++ [ ] Ubiquitous Packages
++ [ ] Aspell
