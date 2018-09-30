@@ -41,6 +41,10 @@ Set up several emacs package repositories.
   (package-initialize)
 #+END_SRC
 
+* Custom functions
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/functions.org")
+#+END_SRC
 * Install stuff
 
 Install a number of default packages on first run.
@@ -84,3 +88,4 @@ startup.
 + [ ] Custom Functions
 + [ ] Ubiquitous Packages
 + [ ] Aspell
+  

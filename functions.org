@@ -1,0 +1,65 @@
+#+TITLE: Some useful functions
+
+* Good for cleaning text
+
+#+begin_src emacs-lisp 
+(defun untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+#+end_src
+
+#+begin_src emacs-lisp 
+(defun indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+#+end_src
+
+#+begin_src emacs-lisp 
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer."
+  (interactive)
+;;  (indent-buffer)
+  (untabify-buffer)
+  (delete-trailing-whitespace))
+#+end_src
+
+* Making ido friends with recentf
+
+#+begin_src emacs-lisp 
+  (defun recentf-ido-find-file () 
+    "Find a recent file using Ido." 
+    (interactive) 
+    (let* ((file-assoc-list 
+            (mapcar (lambda (x) 
+                      (cons (file-name-nondirectory x) 
+                            x)) 
+                    recentf-list)) 
+           (filename-list 
+            (remove-duplicates (mapcar #'car file-assoc-list) 
+                               :test #'string=)) 
+           (filename (ido-completing-read "Choose recent file: " 
+                                          filename-list 
+                                          nil 
+                                          t))) 
+      (when filename 
+        (find-file (cdr (assoc filename 
+                               file-assoc-list)))))) 
+#+end_src
+* Lore ipsum generator
+
+#+begin_src emacs-lisp 
+(defun lorem ()
+  "Insert a lorem ipsum."
+  (interactive)
+  (insert "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do "
+          "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
+          "ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
+          "aliquip ex ea commodo consequat. Duis aute irure dolor in "
+          "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
+          "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
+          "culpa qui officia deserunt mollit anim id est laborum."))
+#+end_src
+
+#+begin_src emacs-lisp
+  (message "Custom Function definitions loaded.")
+#+end_src
