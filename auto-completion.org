@@ -54,7 +54,7 @@ candidates.
     (interactive)
     (if (minibufferp)
         (minibuffer-complete)
-      (if (or (not yas-minor-mode)
+      (if (or (not (bound-and-true-p yas-minor-mode))
               (null (do-yas-expand)))
           (if (check-expansion)
               (company-complete-common)
