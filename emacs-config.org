@@ -34,9 +34,9 @@ Set up several emacs package repositories.
 #+BEGIN_SRC emacs-lisp
   (require 'package)
   (setq package-enable-at-startup nil)
-  (setq package-archives '( ;("melpa"     . "http://melpa.org/packages/")
-			   ("org"       . "http://orgmode.org/elpa/")
-			   ("gnu"       . "http://elpa.gnu.org/packages/")
+  (setq package-archives '(("melpa"     . "https://melpa.org/packages/")
+			   ("org"       . "https://orgmode.org/elpa/")
+			   ("gnu"       . "https://elpa.gnu.org/packages/")
 			   ("marmalade" . "https://marmalade-repo.org/packages/")))
   (package-initialize)
 #+END_SRC
@@ -49,7 +49,7 @@ Set up several emacs package repositories.
 
 Install a number of default packages on first run.
 
-#+BEGIN_SRC emacs-lisp tangle:no
+#+BEGIN_SRC emacs-lisp
 (org-babel-load-file "~/.emacs.d/install-stuff.org")
 #+END_SRC
 
@@ -57,7 +57,7 @@ Install a number of default packages on first run.
 Install use-package, so we can load packages on demand rather than on
 startup.
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
@@ -73,19 +73,86 @@ startup.
 (org-babel-load-file "~/.emacs.d/theming.org")
 #+END_SRC
 
+* Mode configurations
+These are configurations for various modes.
+** Text modes
+#+BEGIN_SRC emacs-lisp
+  (org-babel-load-file "~/.emacs.d/text.org")
+#+END_SRC
+
+** Org-mode
+#+BEGIN_SRC emacs-lisp
+  (org-babel-load-file "~/.emacs.d/org-mode.org")
+#+END_SRC
+
+** Python
+#+BEGIN_SRC emacs-lisp
+  (org-babel-load-file "~/.emacs.d/python.org")
+#+END_SRC
+
+** Eshell
+#+BEGIN_SRC emacs-lisp
+  (org-babel-load-file "~/.emacs.d/eshell.org")
+#+END_SRC
+
+** Auto-completion
+Autocompletion with yas snippets and company-mode.
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/auto-completion.org")
+#+END_SRC
+
+** LaTeX
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/latex.org")
+#+END_SRC
+** Lisp
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/lisp.org")
+#+END_SRC
+** Statistics
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/statistics.org")
+#+END_SRC
+** Miscellaneous
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/mode-config.org")
+#+END_SRC
+
+* Spell-checking
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/flyspell.org")
+#+END_SRC
+
+* Local settings
+Stuff that shouldn't be synchronized across computers goes here.
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/local.org")
+#+END_SRC
+
+* Finally: load settings from M-x customize
+Not sure if necessary. Disabled.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+  (load custom-file 'noerror)
+#+END_SRC
+
 * TODO Stuff that needs to be improved
-+ [ ] Dired: Does moving trash work?
++ [ ] Dired: Does moving to trash work?
 + [ ] I'm not sure if cl-lib actually works
-+ [ ] I had to comment out MELPA, because it wouldn't connect (just hangs).
++ [X] MELPA hangs -- needed https
 + [X] Key Bindings
-+ [ ] Usability and Theming
-+ [ ] Auto-completion
-+ [ ] Org-Mode
-+ [ ] Eshell
++ [X] Usability and Theming
++ [X] Auto-completion
++ [X] Org-Mode
++ [X] Eshell
 + [ ] LaTeX
-+ [ ] Text
++ [X] Text
 + [ ] ESS
-+ [ ] Custom Functions
-+ [ ] Ubiquitous Packages
-+ [ ] Aspell
-  
++ [X] Custom Functions
++ [X] Ubiquitous Packages
++ [X] Aspell
++ [X] Load snippets
++ [ ] Check out how load-package works and adapt config files.

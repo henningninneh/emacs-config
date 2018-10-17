@@ -60,6 +60,35 @@ lets you decide to replace per match.
   (global-set-key (kbd "C-x f") 'recentf-ido-find-file)  
 #+end_src
 
+iBuffer configuration below
+
+#+begin_src emacs-lisp 
+  (setq ibuffer-saved-filter-groups
+      '(("home"
+	 ("emacs-config" (or (filename . ".emacs.d")
+			     (filename . "emacs-config")))
+	 ("Org" (or (mode . org-mode)
+		    (filename . "OrgMode")))
+	 ("Web Dev" (or (mode . html-mode)
+			(mode . css-mode)))
+	 ("Magit" (name . "\*magit"))
+	 ("ESS" (mode . ess-mode))
+         ("LaTeX" (mode . latex-mode))
+	 ("Help" (or (name . "\*Help\*")
+		     (name . "\*Apropos\*")
+		     (name . "\*info\*"))))))
+
+        (add-hook 'ibuffer-mode-hook 
+	             '(lambda ()
+	             (ibuffer-switch-to-saved-filter-groups "home")))
+       (setq ibuffer-show-empty-filter-groups nil)                     
+       (setq ibuffer-expert t)
+       (add-hook 'ibuffer-mode-hook 
+       '(lambda ()
+       (ibuffer-auto-mode 1)
+       (ibuffer-switch-to-saved-filter-groups "home")))
+#+end_src
+
 ** Browse the Kill Ring
    Navigate the kill-ring in a pop-up buffer.
 
@@ -338,6 +367,19 @@ By default C-z is bound to "Suspend Frame", which minimizes Emacs. Bind it to "U
   (global-set-key (kbd "H-S-n") 'mc/mark-more-like-this-extended)
   (global-set-key (kbd "H-S-a") 'mc/mark-all-in-region)
 #+end_src
+** Use `M-e` for sentence-level navigation, 
+
+... but without having to put two spaces after a period.
+#+BEGIN_SRC emacs-lisp
+(setq sentence-end-double-space nil)
+#+END_SRC emacs-lisp
+
+** Add keybindings for commenting regions of text
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
+(global-set-key (kbd "M-'") 'comment-or-uncomment-region)
+#+END_SRC emacs-lisp
 
 ** Make features available for other routines
 #+begin_src emacs-lisp 
@@ -347,3 +389,4 @@ By default C-z is bound to "Suspend Frame", which minimizes Emacs. Bind it to "U
 #+begin_src emacs-lisp
   (message "Key Bindings and Usability Features loaded.")
 #+end_src
+(setq-default indicate-empty-lines nil)

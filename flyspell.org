@@ -1,6 +1,54 @@
 #+TITLE: Spell-checking settings
 
-We use flyspell for in-buffer spell checking.
+* Aspell
+
+We use aspell instead of the emacs-default ispell for general
+spell-checking. Unlike Ispell, Aspell can easily check UTF-8 documents
+without having to use a special dictionary. Aspell will also do its
+best to respect the current locale setting. Other advantages over
+Ispell include support for using multiple dictionaries at once and
+intelligently handling personal dictionaries when more than one Aspell
+process is open at once.
+
+#+begin_src emacs-lisp
+  (setq ispell-program-name "aspell"
+       ispell-dictionary "english"
+       ispell-dictionary-alist
+       (let ((default '("[A-Za-z]" "[^A-Za-z]" "[']" nil
+                        ("-B" "-d" "english")
+                        nil iso-8859-1)))
+         `((nil ,@default)
+           ("english" ,@default))))
+
+     ;; ispell --- make ispell skip \citep, \citet etc in .tex files.
+     (setq ispell-tex-skip-alists
+     '((("%\\[" . "%\\]") ; AMStex block comment...
+     ;; All the standard LaTeX keywords from L. Lamport's guide:
+     ;; \cite, \hspace, \hspace*, \hyphenation, \include, \includeonly, \input,
+     ;; \label, \nocite, \rule (in ispell - rest included here)
+     ("\\\\addcontentsline"              ispell-tex-arg-end 2)
+     ("\\\\add\\(tocontents\\|vspace\\)" ispell-tex-arg-end)
+     ("\\\\\\([aA]lph\\|arabic\\)"   ispell-tex-arg-end)
+     ("\\\\author"                         ispell-tex-arg-end)
+     ;; New regexps here --- kjh
+     ("\\\\\\(text\\|paren\\)cite" ispell-tex-arg-end)
+     ("\\\\cite\\(t\\|p\\|year\\|yearpar\\)" ispell-tex-arg-end)
+     ("\\\\bibliographystyle"                ispell-tex-arg-end)
+     ("\\\\makebox"                  ispell-tex-arg-end 0)
+     ("\\\\e?psfig"                  ispell-tex-arg-end)
+     ("\\\\document\\(class\\|style\\)" .
+     "\\\\begin[ \t\n]*{[ \t\n]*document[ \t\n]*}"))
+     (;; delimited with \begin.  In ispell: displaymath, eqnarray, eqnarray*,
+     ;; equation, minipage, picture, tabular, tabular* (ispell)
+     ("\\(figure\\|table\\)\\*?"     ispell-tex-arg-end 0)
+     ("list" ispell-tex-arg-end 2)
+     ("program"             . "\\\\end[ \t\n]*{[ \t\n]*program[ \t\n]*}")
+     ("verbatim\\*?"        . "\\\\end[ \t\n]*{[ \t\n]*verbatim\\*?[ \t\n]*}"))))
+#+end_src
+
+* Flyspell
+
+We use flyspell for spell checking on the fly.
 
 #+BEGIN_SRC emacs-lisp
 (require 'flyspell)

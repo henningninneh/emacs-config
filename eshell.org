@@ -5,7 +5,7 @@
   (setq eshell-cmpl-cycle-completions nil
         eshell-save-history-on-exit t
         eshell-cmpl-dir-ignore "\\`\\(\\.\\.?\\|CVS\\|\\.svn\\|\\.git\\)/\\'")
-  
+
   (eval-after-load 'esh-opt
     '(progn
        (require 'em-cmpl)
@@ -20,12 +20,12 @@
        (add-to-list 'eshell-command-completions-alist
                     '("gunzip" "gz\\'"))
        (add-to-list 'eshell-command-completions-alist
-                    '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))
-       (add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color)))
+                    '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\"))
+     (add-to-list 'eshell-output-filter-functions
+     'eshell-handle-ansi-color)))
 #+end_src
-
-#+RESULTS:
 
 #+begin_src emacs-lisp
   (message "Eshell config loaded.")
 #+end_src
+

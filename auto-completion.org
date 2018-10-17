@@ -6,6 +6,10 @@ Yasnippet is a snippet expansion system for Emacs. It uses short
 phrases and the tab key to trigger the insertion of frequently-used
 snippets of code or text in your document.
 
+You will have to install your own snippet collections from MELPA or
+elsewhere. Don't forget to =M-x yas-reload-all= after
+installing a collection.
+
 [[http://company-mode.github.io/][Company]] is a text completion framework for Emacs. The name stands for
 "complete anything". It uses pluggable back-ends and front-ends to
 retrieve and display completion candidates.

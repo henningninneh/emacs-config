@@ -45,7 +45,7 @@
         (find-file (cdr (assoc filename 
                                file-assoc-list)))))) 
 #+end_src
-* Lore ipsum generator
+* Lore, ipsum generator
 
 #+begin_src emacs-lisp 
 (defun lorem ()

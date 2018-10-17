@@ -1,5 +1,4 @@
 #+TITLE: Install Stuff from Emacs Repos on first run
-#+OPTIONS: toc:nil num:nil ^:nil
 
 The following packages will be downloaded and installed.
 
@@ -18,8 +17,9 @@ The following packages will be downloaded and installed.
                                 'company-quickhelp
                                 'css-mode
                                 'csv-mode
-				'dracula-theme
-				'draft-mode
+                                'dracula-theme
+                                'draft-mode
+                                'ebib
                                 'emmet-mode
                                 'exec-path-from-shell
                                 'expand-region
@@ -40,7 +40,9 @@ The following packages will be downloaded and installed.
                                 'jedi
                                 'smartparens 
                                 'smex
+                                'smooth-scrolling
                                 'solarized-theme
+                                'stripe-buffer
                                 'tango-2-theme
                                 'typo
                                 'visual-regexp
@@ -49,7 +51,8 @@ The following packages will be downloaded and installed.
                                 'zenburn-theme
                                 'auctex
                                 'ess
-                                'r-autoyas                                
+                                'r-autoyas
+                                'wc-goal-mode
                                 )
     "Libraries that should be installed by default.")
 #+END_SRC
@@ -83,3 +86,4 @@ Make sure the PATH variable is set properly. (Uses exec-path-from-shell package.
 #+BEGIN_SRC emacs-lisp
   (message "Default ELPA installation script finished.")
 #+END_SRC
+
