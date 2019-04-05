@@ -8,6 +8,7 @@
 
 * Windows, Fonts, and Bars
 #+begin_src emacs-lisp 
+(set-frame-font "DejaVu Sans Mono 10" nil t)
       (when window-system
 	(setq frame-title-format '(buffer-file-name "%f" ("%b")))
 	(tooltip-mode -1)

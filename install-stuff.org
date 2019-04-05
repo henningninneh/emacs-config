@@ -21,7 +21,6 @@ The following packages will be downloaded and installed.
                                 'draft-mode
                                 'ebib
                                 'emmet-mode
-                                'exec-path-from-shell
                                 'expand-region
                                 'flycheck
                                 'flx-ido
