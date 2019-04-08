@@ -41,6 +41,16 @@ Set up several emacs package repositories.
   (package-initialize)
 #+END_SRC
 
+Don't clutter everything with backup files.
+
+#+BEGIN_SRC emacs-lisp
+  (setq make-backup-files nil)
+  (setq auto-save-default nil)
+  (setq create-lockfiles nil)
+#+END_SRC
+
+#+RESULTS:
+
 * Custom functions
 #+BEGIN_SRC emacs-lisp
 (org-babel-load-file "~/.emacs.d/functions.org")
