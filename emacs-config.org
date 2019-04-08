@@ -49,8 +49,6 @@ Don't clutter everything with backup files.
   (setq create-lockfiles nil)
 #+END_SRC
 
-#+RESULTS:
-
 * Custom functions
 #+BEGIN_SRC emacs-lisp
 (org-babel-load-file "~/.emacs.d/functions.org")
