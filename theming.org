@@ -144,4 +144,7 @@ When you have buffers with the same filenames in different folders.
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets)  
 #+end_src
 * Start Emacs with an eshell open
+
+#+begin_src emacs-lisp
 (add-hook 'emacs-startup-hook 'eshell)
+#+end_src
