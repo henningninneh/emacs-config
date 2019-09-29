@@ -21,7 +21,7 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (pass calmer-forest-theme dired-single async auctex org-caldav ox-pandoc r-autoyas ess zenburn-theme yaml-mode visual-regexp typo tango-2-theme solarized-theme smex smartparens powerline polymode pandoc-mode org-ac multiple-cursors markdown-mode magit latex-pretty-symbols julia-mode jedi ipython idle-highlight-mode highline flycheck flx-ido expand-region exec-path-from-shell emmet-mode draft-mode dracula-theme csv-mode company-web company-statistics company-quickhelp company-math company-auctex browse-kill-ring anti-zenburn-theme ag adaptive-wrap))))
+    (elpy pass calmer-forest-theme dired-single async auctex org-caldav ox-pandoc r-autoyas ess zenburn-theme yaml-mode visual-regexp typo tango-2-theme solarized-theme smex smartparens powerline polymode pandoc-mode org-ac multiple-cursors markdown-mode magit latex-pretty-symbols julia-mode jedi ipython idle-highlight-mode highline flycheck flx-ido expand-region exec-path-from-shell emmet-mode draft-mode dracula-theme csv-mode company-web company-statistics company-quickhelp company-math company-auctex browse-kill-ring anti-zenburn-theme ag adaptive-wrap))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -17,6 +17,7 @@ The following packages will be downloaded and installed.
                                 'company-quickhelp
                                 'css-mode
                                 'csv-mode
+                                'elpy
                                 'dired-single
                                 'dracula-theme
                                 'draft-mode
