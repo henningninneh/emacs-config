@@ -1,22 +1,15 @@
+
 #+TITLE: Python config
 
 Adds support for Python.
 
-** Check Dependencies
-
-Determine whether required packages are installed. If not, use ELPA to
-install them.
-#+begin_src emacs-lisp
-  (dolist (package '(python-mode))
-    (unless (package-installed-p package)
-      (package-install package)))
-#+end_src
+So far, nothing happens here.
 
 ** Use Python's python-mode.el instead of Emacs' python.el
 Replace the Python mode that comes with Emacs by the Python mode
 supplied by the Python distribution itself.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
     
   (autoload 'python-mode "python-mode" "Python Mode." t)
   (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
