@@ -180,13 +180,5 @@ Add LaTeX to a list of languages that raise noweb-type errors.
 #+begin_src emacs-lisp
   (message "LaTeX configuration loaded.")
 #+end_src
-* Use Zathura as viewer
 
-I wish I could figure out how to enabel inverse search
-
-#+begin_src emacs-lisp 
-
-(add-to-list 'TeX-view-program-selection
-             '(output-pdf "Zathura"))
-#+end_src
 
