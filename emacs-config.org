@@ -28,7 +28,6 @@ because I need them always.
   (require 'recentf) ; find files from a list of recently opened files
 #+END_SRC
 
-
 Set up several emacs package repositories.
 
 #+BEGIN_SRC emacs-lisp

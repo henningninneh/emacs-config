@@ -180,3 +180,13 @@ Add LaTeX to a list of languages that raise noweb-type errors.
 #+begin_src emacs-lisp
   (message "LaTeX configuration loaded.")
 #+end_src
+* Use Zathura as viewer and set up Synctex
+
+#+begin_src emacs-lisp 
+(add-to-list 'TeX-view-program-list
+             '("Zathura" "zathura " (mode-io-correlate "--synctex-forward %n:1:%b") " %o"))
+
+(add-to-list 'TeX-view-program-selection
+             '(output-pdf "Zathura"))
+
+#+end_src

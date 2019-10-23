@@ -17,11 +17,11 @@
      (output-html "xdg-open"))))
  '(custom-safe-themes
    (quote
-    ("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
+    ("d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (elpy pass calmer-forest-theme dired-single async auctex org-caldav ox-pandoc r-autoyas ess zenburn-theme yaml-mode visual-regexp typo tango-2-theme solarized-theme smex smartparens powerline polymode pandoc-mode org-ac multiple-cursors markdown-mode magit latex-pretty-symbols julia-mode jedi ipython idle-highlight-mode highline flycheck flx-ido expand-region exec-path-from-shell emmet-mode draft-mode dracula-theme csv-mode company-web company-statistics company-quickhelp company-math company-auctex browse-kill-ring anti-zenburn-theme ag adaptive-wrap))))
+    (imenu-list outline-toc elpy pass calmer-forest-theme dired-single async auctex org-caldav ox-pandoc r-autoyas ess zenburn-theme yaml-mode visual-regexp typo tango-2-theme solarized-theme smex smartparens powerline polymode pandoc-mode org-ac multiple-cursors markdown-mode magit latex-pretty-symbols julia-mode jedi idle-highlight-mode highline flycheck flx-ido expand-region exec-path-from-shell emmet-mode draft-mode dracula-theme csv-mode company-web company-statistics company-quickhelp company-math company-auctex browse-kill-ring anti-zenburn-theme ag adaptive-wrap))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -40,8 +40,6 @@ The following packages will be downloaded and installed.
                                 'polymode
                                 'pos-tip
                                 'powerline
-                                'python-mode
-                                'ipython
                                 'jedi
                                 'smartparens 
                                 'smex
@@ -60,6 +58,16 @@ The following packages will be downloaded and installed.
                                 'wc-goal-mode
                                 )
     "Libraries that should be installed by default.")
+#+END_SRC
+
+I don't know why, but elpy needs to be installed like this.
+Configure with M-x elpy-config
+
+#+BEGIN_SRC emacs-lisp
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
