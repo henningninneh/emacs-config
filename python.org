@@ -1,7 +1,5 @@
 
 #+TITLE: Python config
 
-Adds support for Python.
-
-So far, nothing happens here.
+(setq python-shell-completion-native-enable nil)
 
