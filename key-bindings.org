@@ -143,6 +143,21 @@ them.
 
   (global-set-key (kbd "C-c m") 'rotate-windows)
 #+end_src
+** Window transpositions with transpose-frame
+Swap frame arrangements: M-x- ...
++ transpose-frame: swap x-direction and y-direction 
++ flip-frame: Flip vertically
++ flop-frame: Flop horizontally
++ rotate-frame: Rotate 180 degrees
++ rotate-frame-clockwise: 90 degrees
++ rotate-frame-anti-clockwise: 90 degrees backwards
+
+#+begin_src emacs-lisp
+
+(require 'transpose-frame)
+
+#+end_src
+
 ** Mark text between parentheses (a sexp) for selection
  Mark text between parentheses. From [[http://stackoverflow.com/questions/5194417/how-to-mark-the-text-between-the-parentheses-in-emacs][this Stackoverflow answer]]. 
 
