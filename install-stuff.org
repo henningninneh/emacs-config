@@ -92,10 +92,9 @@ On your first run, this should pull in all the base packages.
 
 Make sure the PATH variable is set properly. (Uses exec-path-from-shell package.)
 
-#+BEGIN_SRC emacs-lisp (use "'mac ns" for macintosh, "'x" for x window)
-  (when (memq window-system '(x ns))
+#+BEGIN_SRC emacs-lisp 
   (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "PATH"))
+  (exec-path-from-shell-copy-env "PATH")
 
 #+END_SRC
 

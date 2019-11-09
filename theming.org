@@ -1,4 +1,5 @@
-#+TITLE: Theming and Usability Settings
+
++TITLE: Theming and Usability Settings
 
 * Color Theme
 #+begin_src emacs-lisp
@@ -39,9 +40,9 @@
 #+end_src
 * Default Browser
 #+begin_src emacs-lisp 
- ; (setq browse-url-browser-function 'browse-url-firefox)
- (setq browse-url-browser-function 'browse-url-chromium)
- ; (setq browse-url-browser-function 'browse-url-generic
+ (setq browse-url-browser-function 'browse-url-firefox)
+; (setq browse-url-browser-function 'browse-url-chromium)
+; (setq browse-url-browser-function 'browse-url-generic)
 #+end_src
 * Transparently open compressed files
 #+begin_src emacs-lisp
