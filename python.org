@@ -1,5 +1,10 @@
 
 #+TITLE: Python config
 
+Fix some obscure error message that pops up upon loading the interpreter.
+
+#+begin_src emacs-lisp
+
 (setq python-shell-completion-native-enable nil)
 
+#+end_src
