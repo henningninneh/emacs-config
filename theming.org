@@ -9,7 +9,11 @@
 
 * Transparency
 #+begin_src emacs-lisp
-  ;; Set transparency of emacs
+  ;; Set the transparency to a default value
+  (set-frame-parameter (selected-frame) 'alpha '(93 . 50))
+  (add-to-list 'default-frame-alist '(alpha . (93 . 50)))
+
+  ;; Allow user to set transparency of emacs
   (defun transparency (value)
     "Sets the transparency of the frame window. 0=transparent/100=opaque"
     (interactive "nTransparency Value 0 - 100 opaque:")
