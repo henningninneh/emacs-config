@@ -27,7 +27,6 @@ The following packages will be downloaded and installed.
                                 'exec-path-from-shell
                                 'flycheck
                                 'flx-ido
-                                'highline
                                 'transpose-frame
                                 'idle-highlight-mode
                                 'latex-pretty-symbols

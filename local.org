@@ -95,24 +95,6 @@ The following are machine-dependent configurations for org-mode
          (format "%% Org-mode is exporting headings to %s levels.\n"
                  depth)))
    (setq org-latex-format-toc-function 'org-latex-no-toc)
-  
-   ;; note the insertion of the \input statement for the vc information 
-   (add-to-list 'org-latex-classes
-                  '("memarticle"
-                    "\\documentclass[11pt,oneside,article]{memoir}\n\\input{vc} % vc package"
-                     ("\\section{%s}" . "\\section*{%s}")
-                     ("\\subsection{%s}" . "\\subsection*{%s}")
-                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-  
-   (add-to-list 'org-latex-classes
-                  '("membook"
-                    "\\documentclass[11pt,oneside]{memoir}\n\\input{vc} % vc package"
-                    ("\\chapter{%s}" . "\\chapter*{%s}")
-                    ("\\section{%s}" . "\\section*{%s}")
-                    ("\\subsection{%s}" . "\\subsection*{%s}")
-                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
    
    ;; LaTeX compilation command. For orgmode docs we just always use xelatex for convenience.
    ;; You can change it to pdflatex if you like, just remember to make the adjustments to the packages-alist below.

@@ -10,6 +10,10 @@ repository and installs them (only on the first run). More specific
 configurations are delegated to individual configuration files. These
 are called in the subsequent sections.
 
+NOTE: Automatically installing "use-package" does not seem to work The
+corresponding section is therefore deactivated. Instead, you need to
+install "use package" manually for this configuration to work.
+
 The configuration is a strongly based on a "manual fork" from
 [[https://github.com/kjhealy/emacs-starter-kit][Kieran Healy's starter kit for the social sciences]].
 
@@ -64,7 +68,10 @@ Install a number of default packages on first run.
 Install use-package, so we can load packages on demand rather than on
 startup.
 
-#+BEGIN_SRC emacs-lisp
+This is deactivated. It doesn't seem to work. Instead, you need to
+install "use package" manually for this configuration to work.
+
+#+BEGIN_SRC emacs-lisp :tangle no
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
