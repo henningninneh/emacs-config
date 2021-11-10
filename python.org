@@ -1,10 +1,19 @@
 
 #+TITLE: Python config
 
-Fix some obscure error message that pops up upon loading the interpreter.
+** Fix some obscure error message that pops up upon loading the interpreter.
 
 #+begin_src emacs-lisp
-
 (setq python-shell-completion-native-enable nil)
-
 #+end_src
+
+** Tell elpy to use the standard Python interpreter
+
+#+begin_src emacs-lisp
+(setq python-shell-interpreter "python3"
+      python-shell-interpreter-args "-i")
+(setq elpy-rpc-python-command "python3")
+#+end_src
+
+
+

@@ -22,6 +22,7 @@ The following packages will be downloaded and installed.
                                 'dracula-theme
                                 'draft-mode
                                 'ebib
+                                'ein
                                 'emmet-mode
                                 'expand-region
                                 'exec-path-from-shell
