@@ -71,9 +71,19 @@
   (global-font-lock-mode t)
 #+end_src
 * Save a list of recently visited files
+Recentf-mode allows quick access to recently visited files.
+
 #+begin_src emacs-lisp 
   (recentf-mode t)
   (setq save-place-file "~/.emacs.d/places")
+#+end_src
+
+The above requires the "remove duplicates" function. Otherwise trying
+to open recent files with ido throws an obscure error about
+"remove-duplicates".
+
+#+begin_src emacs-lisp 
+  (require 'cl)
 #+end_src
 
 * ido mode and flx-ido
