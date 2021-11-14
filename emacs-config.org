@@ -24,9 +24,12 @@ because I need them always.
 
 #+BEGIN_SRC emacs-lisp
   (require 'cl-lib) ; common lisp compatibility
+  (require 'cl) ; recentf-mode (quickly opening recently visited files)
+                ; requires the "remove duplicates" function from cl
+                ; (classical lisp), even though is deprecated.
   (require 'saveplace) ; put cursor where it was last when visiting file
   (require 'ffap) ; replaces certain key bindings for finding files with
-		  ; commands that provide more sensible defaults.
+                  ; commands that provide more sensible defaults.
   (require 'uniquify) ; make buffer names unique
   (require 'ansi-color) ; translate ANSI SGR escape sequences for Emacs 
   (require 'recentf) ; find files from a list of recently opened files

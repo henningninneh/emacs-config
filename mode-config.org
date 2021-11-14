@@ -8,7 +8,7 @@ This file contains configurations for different modes.
   (load "dired-x")
 #+end_src
 
-** Visit all marked files using. 
+** Visit all marked files using F
 Bound to the "F" key.
 #+begin_src emacs-lisp
   (eval-after-load "dired"

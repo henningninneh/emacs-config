@@ -19,6 +19,7 @@ The following packages will be downloaded and installed.
                                 'csv-mode
                                 'elpy
                                 'dired-single
+                                'dired-toggle-sudo
                                 'dracula-theme
                                 'draft-mode
                                 'ebib
