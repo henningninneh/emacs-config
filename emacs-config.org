@@ -103,7 +103,7 @@ These are configurations for various modes.
 #+END_SRC
 
 ** Python
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
   (org-babel-load-file "~/.emacs.d/python.org")
 #+END_SRC
 
