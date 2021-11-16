@@ -25,9 +25,14 @@ Adding icons to completion candidates and the ibuffer menu:
 (all-the-icons-ibuffer-mode 1)
 #+end_src
 
-Adding icons to dired
+Adding icons to dired:
 #+begin_src emacs-lisp
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+#+end_src
+
+Adding icons to neotree:
+#+begin_src emacs-lisp
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 #+end_src
 
 * Transparency
