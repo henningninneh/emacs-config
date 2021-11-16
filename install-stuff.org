@@ -36,6 +36,7 @@ The following packages will be downloaded and installed.
                                 'magit
                                 'markdown-mode
                                 'multiple-cursors
+                                'neotree
                                 'org-caldav
                                 'pandoc-mode
                                 'pass
@@ -90,7 +91,6 @@ On your first run, this should pull in all the base packages.
   (default-elpa-install)
 #+END_SRC
 
-
 Make sure the PATH variable is set properly. (Uses exec-path-from-shell package.)
 
 #+BEGIN_SRC emacs-lisp 
@@ -98,8 +98,6 @@ Make sure the PATH variable is set properly. (Uses exec-path-from-shell package.
   (exec-path-from-shell-copy-env "PATH")
 
 #+END_SRC
-
-#+RESULTS:
 
 #+BEGIN_SRC emacs-lisp
   (message "Default ELPA installation script finished.")
