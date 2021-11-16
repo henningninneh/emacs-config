@@ -1,5 +1,5 @@
 
-+TITLE: Theming and Usability Settings
+#+TITLE: Theming and Usability Settings
 
 * Color Theme
 #+begin_src emacs-lisp
@@ -87,6 +87,16 @@ Adding icons to neotree:
 ; (setq browse-url-browser-function 'browse-url-chromium)
 ; (setq browse-url-browser-function 'browse-url-generic)
 #+end_src
+* Neotree
+Shows a nifty sidebar with a directory tree structure and with basic
+file editing commands. Press f8 to toggle. For details and keybindings
+see https://github.com/jaypei/emacs-neotree
+
+#+begin_src emacs-lisp
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+#+end_src
+
 * Transparently open compressed files
 #+begin_src emacs-lisp
   (auto-compression-mode t)
