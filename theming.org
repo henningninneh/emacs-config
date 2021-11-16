@@ -7,6 +7,29 @@
   (load-theme 'dracula t)
 #+end_src
 
+* Icons
+Icons are provided by the package all-the-icons. The package also
+allows you to simply inserts incons into text.
+
+NOTE: After the first run, you need to manually call `M-x
+all-the-icons-install-fonts` !
+
+This starts all-the-icons if we're in a graphical terminal:
+#+begin_src emacs-lisp
+  (use-package all-the-icons :if (display-graphic-p))
+#+end_src
+
+Adding icons to completion candidates and the ibuffer menu:
+#+begin_src emacs-lisp
+(all-the-icons-completion-mode 1)
+(all-the-icons-ibuffer-mode 1)
+#+end_src
+
+Adding icons to dired
+#+begin_src emacs-lisp
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+#+end_src
+
 * Transparency
 #+begin_src emacs-lisp
   ;; Set the transparency to a default value. Description:
@@ -21,9 +44,6 @@
     (interactive "nTransparency Value 0 - 100 opaque:")
     (set-frame-parameter (selected-frame) 'alpha value))
 #+end_src
-
-#+RESULTS:
-: transparency
 
 * Windows, Fonts, and Bars
 #+begin_src emacs-lisp 
