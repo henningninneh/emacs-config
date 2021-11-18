@@ -31,8 +31,8 @@ looks ugly in the sidebar and with icons.
 
 #+begin_src emacs-lisp
 (require 'stripe-buffer)
-; (add-hook 'org-mode-hook 'org-table-stripes-enable)
-(add-hook 'dired-mode-hook 'stripe-listify-buffer)  
+(add-hook 'org-mode-hook 'org-table-stripes-enable)
+; (add-hook 'dired-mode-hook 'stripe-listify-buffer)  
 #+end_src
 
 ** Reuse buffers (requires dired-single)
