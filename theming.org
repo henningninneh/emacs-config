@@ -8,15 +8,23 @@
 #+end_src
 
 * Icons
-Icons are provided by the package all-the-icons. The package also
-allows you to simply inserts incons into text.
+Icons are provided by the packages all-the-icons and vscode-icon. The
+packages also allows you to simply inserts incons into text.
 
 NOTE: After the first run, you need to manually call `M-x
 all-the-icons-install-fonts` !
 
-This starts all-the-icons if we're in a graphical terminal:
+This loads all-the-icons if we're in a graphical terminal:
 #+begin_src emacs-lisp
   (use-package all-the-icons :if (display-graphic-p))
+#+end_src
+
+This loads vscode-icon if we're in a graphical terminal:
+#+begin_src emacs-lisp
+  (use-package vscode-icon
+    :ensure t
+    :commands (vscode-icon-for-file)
+    if: display-graphic-p)
 #+end_src
 
 Adding icons to completion candidates and the ibuffer menu:
@@ -91,7 +99,7 @@ Adding icons to neotree (deactivated)
 Shows a nifty sidebar with a directory tree structure and with basic
 file editing commands. Press f8 to toggle. 
 
-Activate one of the sidebars by setting "tangle:" to "yes"
+Activate one of the sidebars by setting "tangle:" to "yes".
 
 ** Option 1: Neotree (deactivated)
 For details and keybindings see
@@ -107,6 +115,8 @@ https://github.com/jaypei/emacs-neotree
 For details and keybindings see
 https://github.com/jojojames/dired-sidebar
 
+For customization see dired-sidebar.el
+
 #+begin_src emacs-lisp tangle: yes
   (use-package dired-sidebar
     :bind (([f8] . dired-sidebar-toggle-sidebar))
@@ -120,6 +130,9 @@ https://github.com/jojojames/dired-sidebar
     :config
     (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
     (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+    ; (setq dired-sidebar-theme 'vscode) ; depends on vscode-icon
+    ; package, disabled because of duplicate icons showing up due to the
+    ; dired-hook to all-the-icons above
     (setq dired-sidebar-use-term-integration t)
     (setq dired-sidebar-use-custom-font t))
 #+end_src
