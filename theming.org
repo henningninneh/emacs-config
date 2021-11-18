@@ -21,10 +21,10 @@ This loads all-the-icons if we're in a graphical terminal:
 
 This loads vscode-icon if we're in a graphical terminal:
 #+begin_src emacs-lisp
-  (use-package vscode-icon
-    :ensure t
-    :commands (vscode-icon-for-file)
-    if: display-graphic-p)
+    (use-package vscode-icon
+      :ensure t
+      :commands (vscode-icon-for-file)
+      :if (display-graphic-p))
 #+end_src
 
 Adding icons to completion candidates and the ibuffer menu:

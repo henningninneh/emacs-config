@@ -23,12 +23,18 @@ Bound to the "F" key.
          (mapc 'find-file fn-list)))))
 #+end_src
 
-** Stripe dired buffers
+** Stripe dired buffers (partly disabled)
+
+Creates a stripe pattern as background for dired buffers (and other
+tables, as defined below). Automatic dired hook disabled, because it
+looks ugly in the sidebar and with icons.
+
 #+begin_src emacs-lisp
 (require 'stripe-buffer)
-(add-hook 'org-mode-hook 'org-table-stripes-enable)
+; (add-hook 'org-mode-hook 'org-table-stripes-enable)
 (add-hook 'dired-mode-hook 'stripe-listify-buffer)  
 #+end_src
+
 ** Reuse buffers (requires dired-single)
 #+begin_src emacs-lisp
 (defun my-dired-init ()
