@@ -6,6 +6,8 @@ This file contains configurations for different modes.
 ** Dired extensions
 #+begin_src emacs-lisp
   (load "dired-x")
+  (require 'dired-quick-sort)
+  (dired-quick-sort-setup)
 #+end_src
 
 ** Visit all marked files using F

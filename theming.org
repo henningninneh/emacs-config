@@ -30,8 +30,8 @@ Adding icons to dired:
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 #+end_src
 
-Adding icons to neotree:
-#+begin_src emacs-lisp
+Adding icons to neotree (deactivated)
+#+begin_src emacs-lisp tangle: no
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 #+end_src
 
@@ -87,14 +87,44 @@ Adding icons to neotree:
 ; (setq browse-url-browser-function 'browse-url-chromium)
 ; (setq browse-url-browser-function 'browse-url-generic)
 #+end_src
-* Neotree
+* Sidebar
 Shows a nifty sidebar with a directory tree structure and with basic
-file editing commands. Press f8 to toggle. For details and keybindings
-see https://github.com/jaypei/emacs-neotree
+file editing commands. Press f8 to toggle. 
 
-#+begin_src emacs-lisp
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
+Activate one of the sidebars by setting "tangle:" to "yes"
+
+** Option 1: Neotree (deactivated)
+For details and keybindings see
+https://github.com/jaypei/emacs-neotree
+
+#+begin_src emacs-lisp tangle: no
+  (require 'neotree)
+  (global-set-key [f8] 'neotree-toggle)
+  (setq neo-smart-open t) ; start neotree in current working dir
+#+end_src
+
+** Option 2: Dired-sidebar (active)
+For details and keybindings see
+https://github.com/jojojames/dired-sidebar
+
+#+begin_src emacs-lisp tangle: yes
+  (use-package dired-sidebar
+    :bind (([f8] . dired-sidebar-toggle-sidebar))
+    :ensure t
+    :commands (dired-sidebar-toggle-sidebar)
+    :init
+    (add-hook 'dired-sidebar-mode-hook
+              (lambda ()
+                (unless (file-remote-p default-directory)
+                  (auto-revert-mode))))
+    :config
+    (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+    (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+
+    (setq dired-sidebar-subtree-line-prefix "__")
+    (setq dired-sidebar-theme 'vscode)
+    (setq dired-sidebar-use-term-integration t)
+    (setq dired-sidebar-use-custom-font t)))
 #+end_src
 
 * Transparently open compressed files
