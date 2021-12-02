@@ -117,6 +117,8 @@ https://github.com/jojojames/dired-sidebar
 
 For customization see dired-sidebar.el
 
+Somehow, the truncation doesn't work.
+
 #+begin_src emacs-lisp tangle: yes
   (use-package dired-sidebar
     :bind (([f8] . dired-sidebar-toggle-sidebar))
@@ -127,6 +129,11 @@ For customization see dired-sidebar.el
               (lambda ()
                 (unless (file-remote-p default-directory)
                   (auto-revert-mode))))
+    ;; don't wrap long filenames. `truncate-lines' is automatically
+    ;; buffer-local, so this should not affec dired-buffers
+    (add-hook 'dired-sidebar-mode-hook
+              (lambda () 
+                (setq truncate-lines t)))
     :config
     (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
     (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
@@ -151,6 +158,7 @@ Recentf-mode allows quick access to recently visited files.
 #+begin_src emacs-lisp 
   (recentf-mode t)
   (setq save-place-file "~/.emacs.d/places")
+  (add-to-list 'recentf-exclude "ido.last")
 #+end_src
 
 * ido mode and flx-ido

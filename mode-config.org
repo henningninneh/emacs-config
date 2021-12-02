@@ -57,6 +57,17 @@ looks ugly in the sidebar and with icons.
 #+begin_src emacs-lisp
  (setq dired-dwim-target t)
 #+end_src
+** Omit dotfiles when omit-mode is active
+
+Default toggle: C-x M-o
+Unfortunately, this also hides the "..", which I find useful to go to
+the parent directory. 
+
+#+begin_src emacs-lisp
+(setq dired-omit-files
+                (concat dired-omit-files "\\|^\\..+$"))
+#+end_src
+
 * Pandoc config 
 A pandoc menu for markdown and tex files. 
 
