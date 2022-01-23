@@ -1,5 +1,9 @@
 #+TITLE: Spell-checking settings
 
+You might have to install the package aspell-de (with your system
+package tool, not from Emacs) for the German dictionary to work
+without Flyspell throwing an error, e.g. apt-get aspell_de
+
 * Aspell
 
 We use aspell instead of the emacs-default ispell for general

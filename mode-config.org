@@ -1,3 +1,4 @@
+
 #+TITLE: Mode Configurations
 
 This file contains configurations for different modes.
@@ -96,4 +97,13 @@ very useful with knitr in R, given that ESS does not yet fully support
   (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+#+end_src
+* CSV config
+Start CSV mode without text wrapping, with background lines, and with
+auto-align enabled.
+
+#+begin_src emacs-lisp 
+  (add-hook 'csv-mode-hook 'csv-align-mode)
+  (add-hook 'csv-mode-hook (lambda () (visual-line-mode -1)))
+  (add-hook 'csv-mode-hook 'stripe-buffer-mode)
 #+end_src
