@@ -13,7 +13,11 @@
 (setq python-shell-interpreter "python3"
       python-shell-interpreter-args "-i")
 (setq elpy-rpc-python-command "python3")
+
+** Show images within the EIN buffer for Jupyter Notebooks
+
+#+begin_src emacs-lisp
+
+(setq ein:output-area-inlined-images t)
+
 #+end_src
-
-
-
