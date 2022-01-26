@@ -157,7 +157,7 @@ Not sure if necessary. Disabled.
 #+END_SRC
 
 * TODO Stuff that needs to be improved
-+ [ ] Dired: Does moving to trash work?
++ [X] Dired: Does moving to trash work?
 + [ ] I'm not sure if cl-lib actually works
 + [X] MELPA hangs -- needed https
 + [X] Key Bindings

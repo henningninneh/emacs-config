@@ -69,6 +69,14 @@ the parent directory.
                 (concat dired-omit-files "\\|^\\..+$"))
 #+end_src
 
+** Refresh on file change
+
+No need to constantly hit g.
+
+#+begin_src emacs-lisp
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+ #+end_src
+
 * Pandoc config 
 A pandoc menu for markdown and tex files. 
 
