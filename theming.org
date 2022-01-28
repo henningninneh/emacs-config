@@ -252,3 +252,9 @@ When you have buffers with the same filenames in different folders.
 #+begin_src emacs-lisp
 (add-hook 'emacs-startup-hook 'eshell)
 #+end_src
+
+* Silent auto-revert
+Prevent auto-revert-mode from clogging the minibuffer mit status messages
+#+begin_src emacs-lisp
+(setq auto-revert-verbose nil)
+#+end_src
