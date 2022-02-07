@@ -22,6 +22,13 @@ R snippets within markdown or org-mode.
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 #+end_src
+
+** Smart underscore
+#+begin_src emacs-lisp :tangle no
+  (define-key ess-r-mode-map "_" #'ess-insert-assign)
+  (define-key inferior-ess-r-mode-map "_" #'ess-insert-assign)
+#+end_src
+
 ** Shift-enter in ESS
  Shift-enter splits window & launches R, executes
  region, or executes line.
