@@ -30,6 +30,7 @@ The following packages will be downloaded and installed.
                                 'draft-mode
                                 'ebib
                                 'ein
+                                'elgrep
                                 'emmet-mode
                                 'expand-region
                                 'exec-path-from-shell
@@ -47,6 +48,10 @@ The following packages will be downloaded and installed.
                                 'pandoc-mode
                                 'pass
                                 'polymode
+                                'poly-R
+                                'poly-markdown
+                                'poly-noweb
+                                'poly-org
                                 'pos-tip
                                 'powerline
                                 'jedi
