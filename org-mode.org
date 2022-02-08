@@ -106,10 +106,24 @@ to org-mode. See [[http://orgmode.org/worg/org-tutorials/org-latex-export.html#s
 * Babel Settings
 Configure org-mode so that when you edit source code in an indirect
 buffer (with C-c '), the buffer is opened in the current window. That
-way, your window organization isn't broken when switching.
+way, your window organization isn't broken when switching:
 
 #+begin_src emacs-lisp
   (setq org-src-window-setup 'current-window)
+#+end_src
+
+Define a shortcut for org-edit-src-code:
+
+#+begin_src emacs-lisp :tangle yes
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c \'") 'org-edit-src-code)))
+#+end_src
+
+Make org-babel use the right python version/command:
+
+#+begin_src emacs-lisp :tangle yes
+(setq py-python-command "/usr/bin/python3")
 #+end_src
 
 * Markdown exporter
@@ -190,16 +204,6 @@ used in the appropriate major mode.
 
 #+begin_src emacs-lisp
   (message "Org-Mode configuration loaded.")
-#+end_src
-* Editing source code in org
-This calls org-edit-src-code, a function that brings up an edit buffer
-containing the code using the Emacs major mode appropriate to the
-language.
-
-#+begin_src emacs-lisp :tangle yes
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c \'") 'org-edit-src-code)))
 #+end_src
 * Enable various languages in org-babel
 By default, only Emacs Lisp is enabled for evaluation. To enable or

@@ -405,3 +405,14 @@ By default C-z is bound to "Suspend Frame", which minimizes Emacs. Bind it to "U
   (message "Key Bindings and Usability Features loaded.")
 #+end_src
 (setq-default indicate-empty-lines nil)
+** Use emacs everywhere
+Invoke the emacs by shortcut. A new Emacs frame will appear,
+within which you can type away to your heart’s content. It will
+remember which window you have focused.
+
+This requires emacs to be running as daemon.
+
+On Linux, ensure you have the following dependencies satisfied: xclip,
+xdotool, xprop, and xwininfo.
+
+See https://github.com/tecosaur/emacs-everywhere
