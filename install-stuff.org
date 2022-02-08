@@ -34,6 +34,7 @@ The following packages will be downloaded and installed.
                                 'emmet-mode
                                 'expand-region
                                 'exec-path-from-shell
+                                'figlet
                                 'flycheck
                                 'flx-ido
                                 'transpose-frame
