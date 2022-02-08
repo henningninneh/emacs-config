@@ -167,7 +167,7 @@ Otherwise the org-keybindings will override windmove.
 
 * Code block fontification
 Display the contents of code blocks in Org-mode files using the
-major-mode of the code; change the behavior of =TAB= to as if it were
+major-mode of the code and change the behavior of =TAB= to as if it were
 used in the appropriate major mode.
 
 #+begin_src emacs-lisp
@@ -201,4 +201,24 @@ language.
             (lambda ()
               (local-set-key (kbd "C-c \'") 'org-edit-src-code)))
 #+end_src
+* Enable various languages in org-babel
+By default, only Emacs Lisp is enabled for evaluation. To enable or
+disable other languages, we need to customize the
+org-babel-load-languages variable.
 
+#+begin_src emacs-lisp :tangle yes
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (python . t)
+     (css . t)
+     (ditaa . t)
+     (eshell . t)
+     (latex . t)
+     (makefile . t)
+     (shell . t)
+     (R . t))
+   )
+
+#+end_src
