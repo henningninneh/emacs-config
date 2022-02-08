@@ -31,3 +31,4 @@ session\\..*
 /theming.el
 /tramp
 /transient/
+/session.*
