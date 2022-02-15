@@ -29,10 +29,9 @@ candidates.
   ;        "/path/to/some/collection/" ;; foo-mode and bar-mode snippet collection
   ;        "/path/to/yasnippet/yasmate/snippets" ;; the yasmate collection
           ))
-    (require 'yasnippet)
-    (yas-global-mode 1)
+  (require 'yasnippet)
+  (yas-global-mode 1)
 #+end_src
-
 
 ** Tweaking yasnippet's behavior
 
@@ -63,7 +62,7 @@ candidates.
 #+end_src
 
 * Company Mode
-Auto-completion of text and code. 
+Auto-completion of text and code.
 
 We use the `:with` keyword to include dabbrev in every backend, which
 gives us completion from everything that's in the buffer (and other
