@@ -12,7 +12,7 @@ to org-mode. See [[http://orgmode.org/worg/org-tutorials/org-latex-export.html#s
 #+begin_src emacs-lisp :tangle no
     (org-add-link-type "ebib" 'ebib)
   
-   (org-add-link-type 
+   (org-add-link-type
      "cite" 'ebib
      (lambda (path desc format)
        (cond
@@ -123,7 +123,8 @@ Define a shortcut for org-edit-src-code:
 Make org-babel use the right python version/command:
 
 #+begin_src emacs-lisp :tangle yes
-(setq py-python-command "/usr/bin/python3")
+  (setq py-python-command "/usr/bin/python3")
+  (setq org-babel-python-command "python3")
 #+end_src
 
 * Markdown exporter
@@ -202,9 +203,6 @@ used in the appropriate major mode.
 #+end_src
 
 
-#+begin_src emacs-lisp
-  (message "Org-Mode configuration loaded.")
-#+end_src
 * Enable various languages in org-babel
 By default, only Emacs Lisp is enabled for evaluation. To enable or
 disable other languages, we need to customize the
@@ -225,4 +223,9 @@ org-babel-load-languages variable.
      (R . t))
    )
 
+#+end_src
+
+* Message
+#+begin_src emacs-lisp
+  (message "Org-Mode configuration loaded.")
 #+end_src

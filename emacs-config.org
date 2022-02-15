@@ -47,13 +47,36 @@ Set up several emacs package repositories.
   (package-initialize)
 #+END_SRC
 
-Don't clutter everything with backup files.
+Don't clutter everything with backup and lock files.
+- By default Emacs saves backup files under the original name with a
+  tilde "~" appended. Rational people use actual version
+  control. So we disable this feature.
+- By default Emacs intermittently saves each buffer in an auto-save
+  file with a hash "#" prepended in the current directory. This can be
+  useful if we forget to save or something crashes, but we want the
+  auto-save files in one directory rather than cluttered throughout
+  the file system. (When you save a file, the auto save file is
+  deleted.)
+- But now we need to stop TRAMP from saving to the backup directory,
+  in order not to expose files owned by root to other users.
+- We don't need lock files.
 
 #+BEGIN_SRC emacs-lisp
   (setq make-backup-files nil)
-  (setq auto-save-default nil)
   (setq create-lockfiles nil)
+  (setq backup-directory-alist
+        `(("." . ,(concat user-emacs-directory "backups"))))
+  (add-to-list 'backup-directory-alist
+             (cons tramp-file-name-regexp nil))
 #+END_SRC
+
+Save the state of Emacs from one session to another
+
+#+begin_src emacs-lisp
+  (setq desktop-enable t)
+  (desktop-load-default)
+  (desktop-read)
+#+end_src
 
 * Custom functions
 #+BEGIN_SRC emacs-lisp
