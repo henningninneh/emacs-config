@@ -73,9 +73,7 @@ Don't clutter everything with backup and lock files.
 Save the state of Emacs from one session to another
 
 #+begin_src emacs-lisp
-  (setq desktop-enable t)
-  (desktop-load-default)
-  (desktop-read)
+  (desktop-save-mode 1)
 #+end_src
 
 * Custom functions
