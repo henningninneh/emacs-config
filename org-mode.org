@@ -145,8 +145,15 @@ Otherwise the org-keybindings will override windmove.
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
-;; (if window-system (require 'org-mouse))
 #+end_src
+
+Toggle org check-boxes using mouse-clicks
+Activate striped tables
+#+begin_src emacs-lisp :tangle yes
+(if window-system (require 'org-mouse))
+(add-hook 'org-mode-hook 'stripe-table-mode)
+#+end_src
+
 * Make yasnippet work in org-mode
 #+begin_src emacs-lisp
   ;;  (defun yas/org-very-safe-expand ()
@@ -201,7 +208,6 @@ used in the appropriate major mode.
               (set-face-attribute 'org-level-4 nil :height 1.1)
               (set-face-attribute 'org-level-5 nil :height 1.1)))
 #+end_src
-
 
 * Enable various languages in org-babel
 By default, only Emacs Lisp is enabled for evaluation. To enable or
