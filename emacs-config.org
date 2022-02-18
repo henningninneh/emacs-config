@@ -70,16 +70,10 @@ Don't clutter everything with backup and lock files.
              (cons tramp-file-name-regexp nil))
 #+END_SRC
 
-Save the state of Emacs from one session to another
+Save the state of Emacs from one session to another. Deactivated, because it somehow breaks the rest of the config.
 
-#+begin_src emacs-lisp
-<<<<<<< HEAD
-;  (setq desktop-enable t)
-;  (desktop-load-default)
-;  (desktop-read)
-=======
-  (desktop-save-mode 1)
->>>>>>> 23344c7 (Fixed non-functioning desktop-save)
+#+begin_src emacs-lisp :tangle no
+ (desktop-save-mode 1)
 #+end_src
 
 * Custom functions
@@ -200,3 +194,4 @@ Not sure if necessary. Disabled.
 + [X] Aspell
 + [X] Load snippets
 + [ ] Check out how load-package works and adapt config files.
+  
