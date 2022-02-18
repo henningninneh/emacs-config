@@ -145,7 +145,6 @@ Otherwise the org-keybindings will override windmove.
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
-;; (if window-system (require 'org-mouse))
 #+end_src
 
 Toggle org check-boxes using mouse-clicks
@@ -218,7 +217,6 @@ used in the appropriate major mode.
               (set-face-attribute 'org-level-4 nil :height 1.1)
               (set-face-attribute 'org-level-5 nil :height 1.1)))
 #+end_src
-
 
 * Enable various languages in org-babel
 By default, only Emacs Lisp is enabled for evaluation. To enable or
