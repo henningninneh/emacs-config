@@ -154,6 +154,15 @@ Activate striped tables
 (add-hook 'org-mode-hook 'stripe-table-mode)
 #+end_src
 
+* Make window shrinking wok in org-mode
+
+#+begin_src emacs-lisp :tangle yes
+(define-key org-mode-map (kbd "S-C-<left>") 'shrink-window-horizontally)
+(define-key org-mode-map (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(define-key org-mode-map (kbd "S-C-<down>") 'shrink-window)
+(define-key org-mode-map (kbd "S-C-<up>") 'enlarge-window)
+#+end_src
+
 * Make yasnippet work in org-mode
 #+begin_src emacs-lisp
   ;;  (defun yas/org-very-safe-expand ()
