@@ -147,11 +147,13 @@ Otherwise the org-keybindings will override windmove.
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 #+end_src
 
-Toggle org check-boxes using mouse-clicks
-Activate striped tables
+- Toggle org check-boxes using mouse-clicks
+- Activate striped tables
+- Activate pandoc-mode
 #+begin_src emacs-lisp :tangle yes
 (if window-system (require 'org-mouse))
 (add-hook 'org-mode-hook 'stripe-table-mode)
+(add-hook 'org-mode-hook 'pandoc-mode)
 #+end_src
 
 * Make window shrinking wok in org-mode
@@ -163,8 +165,6 @@ Activate striped tables
 (define-key org-mode-map (kbd "S-C-<up>") 'enlarge-window)
 #+end_src
 
-=======
->>>>>>> parent of 41606fb (pandoc and striped tables with org, org-mouse)
 * Make yasnippet work in org-mode
 #+begin_src emacs-lisp
   ;;  (defun yas/org-very-safe-expand ()
