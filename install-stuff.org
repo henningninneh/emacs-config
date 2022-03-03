@@ -74,6 +74,7 @@ The following packages will be downloaded and installed.
                                 'auctex
                                 'ess
                                 'r-autoyas
+                                'undo-tree
                                 'vscode-icon 
                                 'wc-goal-mode
                                 )

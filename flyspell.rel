@@ -1,0 +1,24 @@
+;; RefTeX parse info file
+;; File: /home/henning/.emacs.d/flyspell.org
+;; User: henning (Henning)
+
+(set reftex-docstruct-symbol '(
+
+
+(xr nil "\\\\\\\\\\\\")
+
+(index-tags)
+
+(is-multi nil)
+
+(bibview-cache)
+
+(master-dir . "/home/henning/.emacs.d/")
+
+(label-numbers)
+
+(bof "/home/henning/.emacs.d/flyspell.org")
+
+(eof "/home/henning/.emacs.d/flyspell.org")
+))
+

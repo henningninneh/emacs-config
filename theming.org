@@ -174,7 +174,16 @@ Recentf-mode allows quick access to recently visited files.
           ido-use-faces nil
           ido-max-prospects 10))
 #+end_src
-* Other, tabs, imenu and flyspell hooks
+* Undo tree
+Undo tree improves Emacs undo and makes it possible to browse the
+undo/redo history with `undo-tree-visualize` (C-x u)
+- undo: C-_ 
+- redo: M-_
+#+begin_src emacs-lisp :tangle yes
+  ; use undo-tree in all major modes
+  (global-undo-tree-mode)
+#+end_src
+* Tabs, imenu and flyspell hooks
 
 #+begin_src emacs-lisp 
   (set-default 'indent-tabs-mode nil)
