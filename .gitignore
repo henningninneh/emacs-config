@@ -32,3 +32,4 @@ session\\..*
 /tramp
 /transient/
 /session.*
+*.rel
