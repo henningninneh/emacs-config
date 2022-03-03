@@ -50,7 +50,6 @@ The following packages will be downloaded and installed.
                                 'ob-ipython
 				'ob-html-chrome
 				'ob-translate
-                                'org-ref
                                 'pandoc-mode
                                 'pass
                                 'polymode
