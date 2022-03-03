@@ -72,11 +72,10 @@ We use flyspell for spell checking on the fly.
 Reload flyspell after changing the ispell dictionary
 
 #+begin_src emacs-lisp :tangle yes
-(defun restart-flyspell-mode ()
-  (when flyspell-mode
-    (flyspell-mode-off)
-    (flyspell-mode-on)))
-(add-hook 'ispell-change-dictionary-hook 'restart-flyspell-mode)
+(defun restart-flyspell-mode (dict &optional arg)
+  (flyspell-mode-off)
+  (flyspell-mode-on))
+(advice-add 'ispell-change-dictionary :after 'restart-flyspell-mode)
 #+end_src
 
 Speeding up flyspell on the Mac, see

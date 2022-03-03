@@ -40,8 +40,8 @@ Set up several emacs package repositories.
 #+BEGIN_SRC emacs-lisp
   (require 'package)
   (setq package-enable-at-startup nil)
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") ; workaround for "incomprehensible buffer" error
   (setq package-archives '(("melpa"     . "https://melpa.org/packages/")
+			   ("org"       . "https://orgmode.org/elpa/")
 			   ("gnu"       . "https://elpa.gnu.org/packages/")
 			   ("marmalade" . "https://marmalade-repo.org/packages/")))
   (package-initialize)
