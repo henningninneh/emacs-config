@@ -246,8 +246,6 @@ org-babel-load-languages variable.
 - Toggle org check-boxes using mouse-clicks
 - Activate striped tables
 - Activate pandoc-mode
-- Activate yasnippet
-- Activate reftex
 
 #+begin_src emacs-lisp :tangle yes
  (if window-system (require 'org-mouse))
@@ -255,7 +253,6 @@ org-babel-load-languages variable.
  (add-hook 'org-mode-hook 'pandoc-mode)
  (yas-reload-all)
  (add-hook 'org-mode-hook #'yas-minor-mode)
- (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 #+end_src
 
 * Message
