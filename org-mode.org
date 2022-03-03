@@ -141,12 +141,6 @@ Make org-babel use the right python version/command:
 Otherwise the org-keybindings will override windmove.
 
 #+begin_src emacs-lisp
-<<<<<<< HEAD
-  (add-hook 'org-shiftup-final-hook 'windmove-up)
-  (add-hook 'org-shiftleft-final-hook 'windmove-left)
-  (add-hook 'org-shiftdown-final-hook 'windmove-down)
-  (add-hook 'org-shiftright-final-hook 'windmove-right)
-=======
 (add-hook 'org-shiftup-final-hook 'windmove-up)
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
@@ -160,7 +154,6 @@ Otherwise the org-keybindings will override windmove.
 (if window-system (require 'org-mouse))
 (add-hook 'org-mode-hook 'stripe-table-mode)
 (add-hook 'org-mode-hook 'pandoc-mode)
->>>>>>> parent of e104ce4 (adding a heading in org-mode config)
 #+end_src
 
 * Make window shrinking wok in org-mode
