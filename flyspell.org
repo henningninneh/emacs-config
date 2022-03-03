@@ -74,11 +74,11 @@ because it results in an error "void-variable
 flyspell-delayed-commands" after restarting emacs twice....
 
 #+begin_src emacs-lisp :tangle no
-(defun restart-flyspell-mode (_dict &optional _arg)
+(defun restart-flyspell-mode ()
   (when flyspell-mode
     (flyspell-mode-off)
     (flyspell-mode-on)))
-(advice-add 'ispell-change-dictionary :after 'restart-flyspell-mode)
+(add-hook 'ispell-change-dictionary-hook 'restart-flyspell-mode)
 #+end_src
 
 Speeding up flyspell on the Mac, see
