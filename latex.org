@@ -32,9 +32,9 @@
     (file-exists-p (buffer-file-name))
     (reftex-parse-all))
     (define-key org-mode-map (kbd "C-c (") 'reftex-citation))
-
-  (add-hook 'org-mode-hook 'org-mode-reftex-setup)
-
+  ; The hook needs to be called from the org-mode.org config file.
+  ; For some obscure reason it's otherwise ignored.
+  
   ;; RefTeX formats for biblatex (not natbib), and for pandoc
   (setq reftex-cite-format
         '(
