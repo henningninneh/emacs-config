@@ -141,19 +141,10 @@ Make org-babel use the right python version/command:
 Otherwise the org-keybindings will override windmove.
 
 #+begin_src emacs-lisp
-(add-hook 'org-shiftup-final-hook 'windmove-up)
-(add-hook 'org-shiftleft-final-hook 'windmove-left)
-(add-hook 'org-shiftdown-final-hook 'windmove-down)
-(add-hook 'org-shiftright-final-hook 'windmove-right)
-#+end_src
-* Miscellaneous
-- Toggle org check-boxes using mouse-clicks
-- Activate striped tables
-- Activate pandoc-mode
-#+begin_src emacs-lisp :tangle yes
-(if window-system (require 'org-mouse))
-(add-hook 'org-mode-hook 'stripe-table-mode)
-(add-hook 'org-mode-hook 'pandoc-mode)
+  (add-hook 'org-shiftup-final-hook 'windmove-up)
+  (add-hook 'org-shiftleft-final-hook 'windmove-left)
+  (add-hook 'org-shiftdown-final-hook 'windmove-down)
+  (add-hook 'org-shiftright-final-hook 'windmove-right)
 #+end_src
 
 * Make window shrinking wok in org-mode
@@ -240,6 +231,19 @@ org-babel-load-languages variable.
      (R . t))
    )
 
+#+end_src
+
+* Miscellaneous
+- Toggle org check-boxes using mouse-clicks
+- Activate striped tables
+- Activate pandoc-mode
+
+#+begin_src emacs-lisp :tangle yes
+ (if window-system (require 'org-mouse))
+ (add-hook 'org-mode-hook 'stripe-table-mode)
+ (add-hook 'org-mode-hook 'pandoc-mode)
+ (yas-reload-all)
+ (add-hook 'org-mode-hook #'yas-minor-mode)
 #+end_src
 
 * Message
