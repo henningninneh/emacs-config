@@ -146,7 +146,7 @@ Otherwise the org-keybindings will override windmove.
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 #+end_src
-
+* Miscellaneous
 - Toggle org check-boxes using mouse-clicks
 - Activate striped tables
 - Activate pandoc-mode
