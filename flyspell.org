@@ -69,9 +69,11 @@ We use flyspell for spell checking on the fly.
 ;  (setq flyspell-issue-message-flag nil)
 #+END_SRC
 
-Reload flyspell after changing the ispell dictionary
+Reload flyspell after changing the ispell dictionary. Deactivated
+because it results in an error "void-variable
+flyspell-delayed-commands" after restarting emacs twice....
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 (defun restart-flyspell-mode (_dict &optional _arg)
   (when flyspell-mode
     (flyspell-mode-off)
