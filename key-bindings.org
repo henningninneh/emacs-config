@@ -199,13 +199,13 @@ Swap frame arrangements: M-x- ...
 #+end_src
 
 ** Fetch and display contents at a URL
-#+begin_src emacs-lisp :tangle yes
-;  (global-set-key (kbd "C-c h") 'browse-url-emacs) ; plain text
-;  (global-set-key (kbd "C-c j") 'browse-url) ; default browser
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-c h") 'browse-url-emacs) ; plain text
+  (global-set-key (kbd "C-c j") 'browse-url) ; default browser
 #+end_src
 
 ** Ebib
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-c e") 'ebib)
 #+end_src
 
@@ -227,7 +227,7 @@ Swap frame arrangements: M-x- ...
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 #+end_src
 
-** Store Link for org-mode from with C-cl
+** Store Link for org-mode with C-cl
 Org-mode supports [[http://orgmode.org/manual/Hyperlinks.html#Hyperlinks][links]], this command allows you to store links
 globally for later insertion into an Org-mode buffer. Defines a global
 binding for this  (C-cl means Control-c, then l)

@@ -241,3 +241,21 @@ Prevent auto-revert-mode from clogging the minibuffer mit status messages
 (setq auto-revert-verbose nil)
 #+end_src
 
+* Transparency
+#+begin_src emacs-lisp
+(setq transparency_level 0)
+(defun transparency ()
+  "Toggle transparency of Emacs between 3 settings (none, mild, moderate)."
+  (interactive)
+  (if (equal transparency_level 0)
+      (progn (set-frame-parameter (selected-frame) 'alpha '(75 . 85))
+         (setq transparency_level 1))
+    (if (equal transparency_level 1)
+    (progn (set-frame-parameter (selected-frame) 'alpha '(50 . 85))
+           (setq transparency_level 2))
+      (if (equal transparency_level 2)
+      (progn (set-frame-parameter (selected-frame) 'alpha '(100 . 85))
+         (setq transparency_level 0)))
+      )))
+(define-key global-map (kbd "C-c t") 'transparency)
+#+end_src
