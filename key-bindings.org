@@ -8,7 +8,7 @@ Defining some key-bindings and usability features below.
 #+end_src
 
 ** Indent code in a pretty way
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x a") 'join-line)
 #+end_src
 
@@ -24,8 +24,8 @@ Defining some key-bindings and usability features below.
 
 ** Change font size
 #+begin_src emacs-lisp 
-(define-key global-map (kbd "C-+") 'text-scale-increase)
-(define-key global-map (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 #+end_src
 
 ** Search and Replace with regular expressions
@@ -37,15 +37,15 @@ to the expression you type are highlighted in the main buffer. =M-x
 vr/replace= gives you global replacement and =M-x vr/query-replace=
 lets you decide to replace per match.
 
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
   (global-set-key (kbd "C-s") 'isearch-forward-regexp)
-  (global-set-key (kbd "\C-r") 'isearch-backward-regexp)
+  (global-set-key (kbd "C-r") 'isearch-backward-regexp)
   (global-set-key (kbd "C-M-s") 'isearch-forward)
-  (global-set-key (kbd "C-M-r") 'isearch-backward)
+  (global-set-key (kbd "C-M-b") 'isearch-backward)
   
   (require 'visual-regexp)
-  (global-set-key (kbd "C-c r") 'vr/replace)
-  (global-set-key (kbd "C-c q") 'vr/query-replace)
+  (global-set-key (kbd "C-x C-c r") 'vr/replace)
+  (global-set-key (kbd "C-x C-c q") 'vr/query-replace)
 #+end_src
 
 ** File finding and iBuffer
@@ -153,25 +153,9 @@ Swap frame arrangements: M-x- ...
 + rotate-frame-anti-clockwise: 90 degrees backwards
 
 #+begin_src emacs-lisp
-
 (require 'transpose-frame)
-
 #+end_src
 
-** Mark text between parentheses (a sexp) for selection
- Mark text between parentheses. From [[http://stackoverflow.com/questions/5194417/how-to-mark-the-text-between-the-parentheses-in-emacs][this Stackoverflow answer]]. 
-
-#+begin_src emacs-lisp
-(defun backward-up-sexp (arg)
-  (interactive "p")
-  (let ((ppss (syntax-ppss)))
-    (cond ((elt ppss 3)
-           (goto-char (elt ppss 8))
-           (backward-up-sexp (1- arg)))
-          ((backward-up-list arg)))))
-
-(global-set-key [remap backward-up-list] 'backward-up-sexp)  
-#+end_src
 ** Start eshell or switch to it if it's active
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-x m") 'eshell)
@@ -196,7 +180,6 @@ Swap frame arrangements: M-x- ...
     Smex replaces M-x, and is built on top of ido-mode. See
     http://github.com/nonsequitur/smex or
     http://www.emacswiki.org/emacs/Smex for details.  
-#+srcname: smex
 #+begin_src emacs-lisp
   (require 'smex)
   (smex-initialize)  
@@ -209,10 +192,12 @@ Swap frame arrangements: M-x- ...
   (setq smex-show-unbound-commands t)
   (smex-auto-update 30)
 #+end_src
+
 ** M-x without meta key
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-x C-m") 'smex)
 #+end_src
+
 ** Fetch and display contents at a URL
 #+begin_src emacs-lisp :tangle no
 ;  (global-set-key (kbd "C-c h") 'browse-url-emacs) ; plain text
@@ -223,6 +208,7 @@ Swap frame arrangements: M-x- ...
 #+begin_src emacs-lisp :tangle no
 (global-set-key (kbd "C-c e") 'ebib)
 #+end_src
+
 ** Help should search more than just commands
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-h a") 'apropos)
@@ -232,6 +218,7 @@ Swap frame arrangements: M-x- ...
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-x g") 'magit-status)
 #+end_src
+
 ** Activate occur inside isearch
 #+begin_src emacs-lisp 
 (define-key isearch-mode-map (kbd "C-o")
@@ -239,25 +226,15 @@ Swap frame arrangements: M-x- ...
     (let ((case-fold-search isearch-case-fold-search))
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 #+end_src
+
 ** Store Link for org-mode from with C-cl
 Org-mode supports [[http://orgmode.org/manual/Hyperlinks.html#Hyperlinks][links]], this command allows you to store links
 globally for later insertion into an Org-mode buffer. Defines a global
-binding for this
+binding for this  (C-cl means Control-c, then l)
 #+begin_src emacs-lisp
-(define-key global-map "\C-cl" 'org-store-link)
+(global-set-key "\C-cl" 'org-store-link)
 #+end_src
 
-** Interface with Ag ("The Silver Searcher")
-[[https://github.com/ggreer/the_silver_searcher][The Silver Searcher]] is a very fast, smart code search tool, similar to
-ack. Install it via homebrew. The emacs interface, `ag-mode`, is [[https://github.com/Wilfred/ag.el/#agel][described here]].
-
-#+source: ag
-#+begin_src emacs-lisp 
-  (require 'ag)
-  (define-key global-map "\C-x\C-a" 'ag) 
-  (define-key global-map "\C-x\C-r" 'ag-regexp)
-#+end_src
-ty
 ** Winner mode
     Remember the previous window configurations and jump back to them
     as needed (as when, e.g., some other mode messes with your working
@@ -347,8 +324,12 @@ By default C-z is bound to "Suspend Frame", which minimizes Emacs. Bind it to "U
     (global-set-key (kbd "M-E") 'er/expand-region)  
 #+end_src
 ** Multiple Cursors
-   Use multiple cursors for search, replace, and text-cleaning tasks. For a demonstration, see http://emacsrocks.com/e13.html
-   First mark the word, then add more cursors. To get out of multiple-cursors-mode, press <return> or C-g. The latter will first disable multiple regions before disabling multiple cursors. If you want to insert a newline in multiple-cursors-mode, use C-j.
+   Use multiple cursors for search, replace, and text-cleaning
+   tasks. For a demonstration, see http://emacsrocks.com/e13.html
+   First mark the word, then add more cursors. To get out of
+   multiple-cursors-mode, press <return> or C-g. The latter will first
+   disable multiple regions before disabling multiple cursors. If you
+   want to insert a newline in multiple-cursors-mode, use C-j.
 
 #+begin_src emacs-lisp
   (require 'multiple-cursors)
