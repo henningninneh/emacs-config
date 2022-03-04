@@ -72,7 +72,7 @@
 
 ** TODO Live preview in markdown app
 
-Either find a Marked.app replacement for BSD or change to preview in browser
+Either find a Marked.app replacement for Linux or change to preview in browser
 
 #+begin_src emacs-lisp :tangle no
 

@@ -5,52 +5,52 @@ knife of productivity.
 
 For more information on org-mode check out [[http://orgmode.org/worg/][worg]].
 
-* Ebib and citation settings (deactivated)
+* Ebib and citation settings
 ebib is a bibtex database manager that works inside emacs. It can talk
 to org-mode. See [[http://orgmode.org/worg/org-tutorials/org-latex-export.html#sec-17_2][this Worg tutorial]] for details.
 
-#+begin_src emacs-lisp :tangle no
-    (org-add-link-type "ebib" 'ebib)
+#+begin_src emacs-lisp
+  (org-add-link-type "ebib" 'ebib)
   
-   (org-add-link-type
-     "cite" 'ebib
-     (lambda (path desc format)
-       (cond
-        ((eq format 'latex)
-         (if (or (not desc) (equal 0 (search "cite:" desc)))
-               (format "\\cite{%s}" path)
-               (format "\\cite[%s]{%s}" desc path)
-               )))))
-  
-   (org-add-link-type 
-     "parencite" 'ebib
-     (lambda (path desc format)
-       (cond
-        ((eq format 'latex)
-         (if (or (not desc) (equal 0 (search "parencite:" desc)))
-               (format "\\parencite{%s}" path)
-               (format "\\parencite[%s]{%s}" desc path)
-  )))))
+  (org-add-link-type
+   "cite" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "cite:" desc)))
+           (format "\\cite{%s}" path)
+         (format "\\cite[%s]{%s}" desc path)
+         )))))
   
   (org-add-link-type 
-     "textcite" 'ebib
-     (lambda (path desc format)
-       (cond
-        ((eq format 'latex)
-         (if (or (not desc) (equal 0 (search "textcite:" desc)))
-               (format "\\textcite{%s}" path)
-               (format "\\textcite[%s]{%s}" desc path)
-  )))))
+   "parencite" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "parencite:" desc)))
+           (format "\\parencite{%s}" path)
+         (format "\\parencite[%s]{%s}" desc path)
+         )))))
   
   (org-add-link-type 
-     "autocite" 'ebib
-     (lambda (path desc format)
-       (cond
-        ((eq format 'latex)
-         (if (or (not desc) (equal 0 (search "autocite:" desc)))
-               (format "\\autocite{%s}" path)
-           (format "\\autocite[%s]{%s}" desc path)
-  )))))
+   "textcite" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "textcite:" desc)))
+           (format "\\textcite{%s}" path)
+         (format "\\textcite[%s]{%s}" desc path)
+         )))))
+  
+  (org-add-link-type 
+   "autocite" 'ebib
+   (lambda (path desc format)
+     (cond
+      ((eq format 'latex)
+       (if (or (not desc) (equal 0 (search "autocite:" desc)))
+           (format "\\autocite{%s}" path)
+         (format "\\autocite[%s]{%s}" desc path)
+         )))))
   
   (org-add-link-type 
    "footcite" 'ebib
@@ -114,7 +114,7 @@ way, your window organization isn't broken when switching:
 
 Define a shortcut for org-edit-src-code:
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
   (add-hook 'org-mode-hook
             (lambda ()
               (local-set-key (kbd "C-c \'") 'org-edit-src-code)))
@@ -122,7 +122,7 @@ Define a shortcut for org-edit-src-code:
 
 Make org-babel use the right python version/command:
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
   (setq py-python-command "/usr/bin/python3")
   (setq org-babel-python-command "python3")
 #+end_src
@@ -150,7 +150,7 @@ Otherwise the org-keybindings will override windmove.
 - Toggle org check-boxes using mouse-clicks
 - Activate striped tables
 - Activate pandoc-mode
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
 (if window-system (require 'org-mouse))
 (add-hook 'org-mode-hook 'stripe-table-mode)
 (add-hook 'org-mode-hook 'pandoc-mode)
@@ -158,7 +158,7 @@ Otherwise the org-keybindings will override windmove.
 
 * Make window shrinking wok in org-mode
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
 (define-key org-mode-map (kbd "S-C-<left>") 'shrink-window-horizontally)
 (define-key org-mode-map (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (define-key org-mode-map (kbd "S-C-<down>") 'shrink-window)
@@ -225,7 +225,7 @@ By default, only Emacs Lisp is enabled for evaluation. To enable or
 disable other languages, we need to customize the
 org-babel-load-languages variable.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
 
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -247,7 +247,7 @@ org-babel-load-languages variable.
 - Activate striped tables
 - Activate pandoc-mode
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
  (if window-system (require 'org-mouse))
  (add-hook 'org-mode-hook 'stripe-table-mode)
  (add-hook 'org-mode-hook 'pandoc-mode)

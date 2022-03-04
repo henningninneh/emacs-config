@@ -96,7 +96,7 @@ and supports, e.g., R and markdown in a single =.Rmd= file. So it is
 very useful with knitr in R, given that ESS does not yet fully support
 =.Rmd= files.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
   (require 'poly-R)
   (require 'poly-markdown)
   ;;; polymode + markdown

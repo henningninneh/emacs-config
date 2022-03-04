@@ -37,11 +37,6 @@ Adding icons to dired:
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 #+end_src
 
-Adding icons to neotree (deactivated)
-#+begin_src emacs-lisp tangle: no
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-#+end_src
-
 * Windows, Fonts, and Bars
 #+begin_src emacs-lisp 
 

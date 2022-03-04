@@ -88,7 +88,6 @@ Install a number of default packages on first run.
 (org-babel-load-file "~/.emacs.d/install-stuff.org")
 #+END_SRC
 
-
 Install use-package, so we can load packages on demand rather than on
 startup.
 

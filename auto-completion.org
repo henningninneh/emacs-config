@@ -35,7 +35,7 @@ candidates.
 
 ** Tweaking yasnippet's behavior
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
 (defun check-expansion ()
     (save-excursion
       (if (looking-at "\\_>") t

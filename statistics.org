@@ -12,7 +12,7 @@ Emacs
 Lets you use multiple modes inside a single buffer. Useful for writing
 R snippets within markdown or org-mode.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
   (require 'poly-R)
   (require 'poly-markdown)
   ;;; polymode + markdown
@@ -24,7 +24,7 @@ R snippets within markdown or org-mode.
 #+end_src
 
 ** Smart underscore
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
   (define-key ess-r-mode-map "_" #'ess-insert-assign)
   (define-key inferior-ess-r-mode-map "_" #'ess-insert-assign)
 #+end_src
@@ -34,7 +34,7 @@ R snippets within markdown or org-mode.
  region, or executes line.
  http://www.emacswiki.org/emacs/EmacsSpeaksStatistics,
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (setq ess-ask-for-ess-directory nil)
   (setq ess-local-process-name "R")
   (setq ansi-color-for-comint-mode 'filter)

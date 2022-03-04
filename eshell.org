@@ -31,7 +31,7 @@
 * Properly display progress indicators (in the echo area)
 See https://oremacs.com/2019/03/24/shell-apt/
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
   (advice-add
    'ansi-color-apply-on-region
    :before 'ora-ansi-color-apply-on-region)

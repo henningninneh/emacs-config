@@ -9,18 +9,18 @@ Useful on Mac and BSDs
 (setq insert-directory-program (executable-find "gls"))
 #+END_SRC emacs-lisp
 
-* TODO Path to RefTeX bibliography
+* Path to RefTeX bibliography
 Tell RefTeX where the bibliography files are
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
     (setq reftex-default-bibliography
-    '("PATH TO CLOUD-SHARED BIBIOGRAPHY"))
+    '("~/cloud/misc/references.bib"))
 #+end_src
 * Local org-mode configuration
 
 The following are machine-dependent configurations for org-mode
 
-** TODO HTML export settings
+** HTML export settings
  Create =html= files form the =org= sources, to help with
  documentation. To set up org-mode for publishing projects to HTML you
  will need to change these settings.
@@ -44,24 +44,11 @@ The following are machine-dependent configurations for org-mode
    (setq org-html-postamble nil)
   
  #+end_src
-** TODO Archive Settings
+** Archive Settings
      Where archived projects and tasks go.
 
- #+begin_src emacs-lisp :tangle no
+ #+begin_src emacs-lisp
    (setq org-archive-location "~/cloud/org/archive.org::From %s")
- #+end_src
-** TODO Mobile Settings
-    Sync orgmode files with Dropbox and mobile
-
- #+begin_src emacs-lisp :tangle no
-    ;; Set to the location of your Org files on your local system
-    (setq org-directory "~/cloud/org")
-    ;; Set to <your Dropbox root directory>/MobileOrg.
-    (setq org-mobile-directory "~/cloud/MobileOrg")
-    ;; Set to the files (or directory of files) you want sync'd
-    (setq org-agenda-files (quote ("~/cloud/org")))
-    ;; Set to the name of the file where new notes will be stored
-    (setq org-mobile-inbox-for-pull "~/cloud/org/from-mobile.org")
  #+end_src
 ** TODO XeLaTeX and pdfLaTeX Export Settings
     Configure org-mode to export directly to PDF using xelatex,

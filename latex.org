@@ -68,12 +68,14 @@
 #+end_src
 
 ** Load ebib bibtex database manager
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
   (autoload 'ebib "ebib" "Ebib, a BibTeX database manager." t)
   (setq ebib-preload-bib-files 
-        '("PATH-TO-BIBTEX-LIBRARY"))
+        '("~/cloud/misc/references.bib"))
   (add-hook 'LaTeX-mode-hook #'(lambda ()
-          (local-set-key "\C-cb" 'ebib-insert-bibtex-key)))
+                                 (local-set-key "\C-cb" 'ebib-insert-bibtex-key)))
+  (add-hook 'Markdown-mode-hook #'(lambda ()
+                                 (local-set-key "\C-cb" 'ebib-insert-bibtex-key)))
 #+end_src
 
 * AucTeX 
