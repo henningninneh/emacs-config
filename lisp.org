@@ -25,9 +25,6 @@ Support for editing [[* Emacs Lisp][Emacs Lisp]] and [[* Common Lisp][Common Lis
             (lambda ()
               (if (file-exists-p (concat buffer-file-name "c"))
                   (delete-file (concat buffer-file-name "c"))))))
-
-(font-lock-add-keywords 'emacs-lisp-mode
-			'(("(\\|)" . 'esk-paren-face)))
 #+end_src
 
 ** Common Lisp
