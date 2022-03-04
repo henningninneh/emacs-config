@@ -69,6 +69,7 @@ The following packages will be downloaded and installed.
                                 'visual-regexp
                                 'yaml-mode
                                 'yasnippet
+                                'yasnippet-snippets
                                 'zenburn-theme
                                 'auctex
                                 'ess

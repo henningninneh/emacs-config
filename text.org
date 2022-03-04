@@ -50,6 +50,8 @@
 * Markdown 
 ** Basic Markdown mode support
 
+Automatically chose markdown mode, based on file extension.
+
 #+begin_src emacs-lisp
       (autoload 'markdown-mode "markdown-mode"
       "Major mode for editing Markdown files" t)
@@ -69,6 +71,20 @@
       (cons '("README\\.md" . gfm-mode) auto-mode-alist)
       )
 #+end_src
+
+Align keybindings with org-mode
+
+#+begin_src emacs-lisp
+  (add-hook 'markdown-mode-hook
+            (lambda ()
+   (local-set-key (kbd "<M-right>") 'markdown-demote)
+   (local-set-key (kbd "<M-left>") 'markdown-promote)
+   (local-set-key (kbd "<M-up>") 'markdown-move-up)
+   (local-set-key (kbd "<M-down>") 'markdown-move-down)))
+#+end_src
+
+#+RESULTS:
+| (lambda nil (local-set-key (kbd <M-right>) 'markdown-demote) (local-set-key (kbd <M-left>) 'markdown-promote) (local-set-key (kbd <M-up>) 'markdown-move-up) (local-set-key (kbd <M-down>) 'markdown-move-down)) | pandoc-mode | turn-off-auto-fill | turn-on-flyspell |
 
 ** TODO Live preview in markdown app
 
