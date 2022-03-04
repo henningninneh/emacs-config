@@ -44,18 +44,25 @@ Adding icons to neotree (deactivated)
 #+end_src
 
 * Transparency
-#+begin_src emacs-lisp
-  ;; Set the transparency to a default value. Description:
-  ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
-  ;;(set-frame-parameter (selected-frame) 'alpha <both>)
-  (set-frame-parameter (selected-frame) 'alpha '(93 . 50))
-  (add-to-list 'default-frame-alist '(alpha . (93 . 50)))
+The first value in the alpha tuple is for an active frame, the second
+for an inactive frame
 
-  ;; Allow user to set transparency of emacs
-  (defun transparency (value)
-    "Sets the transparency of the frame window. 0=transparent/100=opaque"
-    (interactive "nTransparency Value 0 - 100 opaque:")
-    (set-frame-parameter (selected-frame) 'alpha value))
+#+begin_src emacs-lisp
+(setq transparency_level 0)
+(defun transparency ()
+  "Toggles transparency of Emacs between 3 settings (none, mild, moderate)."
+  (interactive)
+  (if (equal transparency_level 0)
+      (progn (set-frame-parameter (selected-frame) 'alpha '(75 . 85))
+         (setq transparency_level 1))
+    (if (equal transparency_level 1)
+    (progn (set-frame-parameter (selected-frame) 'alpha '(50 . 85))
+           (setq transparency_level 2))
+      (if (equal transparency_level 2)
+      (progn (set-frame-parameter (selected-frame) 'alpha '(100 . 85))
+         (setq transparency_level 0)))
+      )))
+;(define-key global-map (kbd "C-c t") 'transparency)
 #+end_src
 
 * Windows, Fonts, and Bars
