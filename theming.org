@@ -1,5 +1,29 @@
 #+TITLE: Theming and Usability Settings
 
+* Transparency
+The first value in the alpha tuple is for an active frame, the second
+for an inactive frame
+
+This needs to be loaded before the color theme.
+
+#+begin_src emacs-lisp :tangle yes
+(setq transparency_level 0)
+(defun transparency ()
+  "Toggles transparency of Emacs between 3 settings (none, mild, moderate)."
+  (interactive)
+  (if (equal transparency_level 0)
+      (progn (set-frame-parameter (selected-frame) 'alpha '(75 . 85))
+         (setq transparency_level 1))
+    (if (equal transparency_level 1)
+    (progn (set-frame-parameter (selected-frame) 'alpha '(50 . 85))
+           (setq transparency_level 2))
+      (if (equal transparency_level 2)
+      (progn (set-frame-parameter (selected-frame) 'alpha '(100 . 85))
+         (setq transparency_level 0)))
+      )))
+(define-key global-map (kbd "C-c t") 'transparency)
+#+end_src
+
 * Color Theme
 #+begin_src emacs-lisp
   (setq custom-safe-themes t)
@@ -42,28 +66,6 @@ Adding icons to neotree (deactivated)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 #+end_src
 
-* Transparency
-The first value in the alpha tuple is for an active frame, the second
-for an inactive frame
-
-#+begin_src emacs-lisp :tangle yes
-(setq transparency_level 0)
-(defun transparency ()
-  "Toggles transparency of Emacs between 3 settings (none, mild, moderate)."
-  (interactive)
-  (if (equal transparency_level 0)
-      (progn (set-frame-parameter (selected-frame) 'alpha '(75 . 85))
-         (setq transparency_level 1))
-    (if (equal transparency_level 1)
-    (progn (set-frame-parameter (selected-frame) 'alpha '(50 . 85))
-           (setq transparency_level 2))
-      (if (equal transparency_level 2)
-      (progn (set-frame-parameter (selected-frame) 'alpha '(100 . 85))
-         (setq transparency_level 0)))
-      )))
-;(define-key global-map (kbd "C-c t") 'transparency)
-#+end_src
-
 * Windows, Fonts, and Bars
 #+begin_src emacs-lisp 
 
@@ -75,7 +77,7 @@ for an inactive frame
    font-lock-maximum-decoration t
    font-lock-verbose nil
    inhibit-startup-message t
-   delete-by-moving-to-trash t ;does this work on BSD?
+   delete-by-moving-to-trash t
    shift-select-mode nil
    truncate-partial-width-windows nil
    uniquify-buffer-name-style 'forward
@@ -85,15 +87,13 @@ for an inactive frame
    whitespace-style '(trailing lines space-before-tab
                                indentation space-after-tab)
    )
-
-  (tooltip-mode -1)
+  (tooltip-mode 1)
   (tool-bar-mode -1)
-  (blink-cursor-mode -1)
+  (blink-cursor-mode 1)
   (xterm-mouse-mode t)
   (set-terminal-coding-system 'utf-8)
   (set-keyboard-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
-
 #+end_src
 * Default Browser
 #+begin_src emacs-lisp 
