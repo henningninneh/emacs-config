@@ -45,7 +45,7 @@ lets you decide to replace per match.
   
   (require 'visual-regexp)
   (global-set-key (kbd "C-c r") 'vr/replace)
-  (define-set-key (kbd "C-c q") 'vr/query-replace)
+  (global-set-key (kbd "C-c q") 'vr/query-replace)
 #+end_src
 
 ** File finding and iBuffer
