@@ -1,4 +1,3 @@
-
 #+TITLE: Theming and Usability Settings
 
 * Color Theme
@@ -47,7 +46,7 @@ Adding icons to neotree (deactivated)
 The first value in the alpha tuple is for an active frame, the second
 for an inactive frame
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (setq transparency_level 0)
 (defun transparency ()
   "Toggles transparency of Emacs between 3 settings (none, mild, moderate)."
