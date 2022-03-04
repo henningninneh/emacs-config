@@ -21,18 +21,6 @@ C-o. Press M-(digit) to quickly complete with one of the first 10
 candidates.
 
 * Yasnippet
-** Load yasnippet and some snippet bundles
-
-#+begin_src emacs-lisp
-  (setq yas-snippet-dirs
-        '("~/.emacs.d/snippets"                 ;; personal snippets
-  ;        "/path/to/some/collection/" ;; foo-mode and bar-mode snippet collection
-  ;        "/path/to/yasnippet/yasmate/snippets" ;; the yasmate collection
-          ))
-  (require 'yasnippet)
-  (yas-global-mode 1)
-#+end_src
-
 ** Tweaking yasnippet's behavior
 
 #+begin_src emacs-lisp
