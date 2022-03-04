@@ -44,8 +44,8 @@ lets you decide to replace per match.
   (global-set-key (kbd "C-M-b") 'isearch-backward)
   
   (require 'visual-regexp)
-  (global-set-key (kbd "C-x C-c r") 'vr/replace)
-  (global-set-key (kbd "C-x C-c q") 'vr/query-replace)
+  (global-set-key (kbd "C-c s") 'vr/replace)
+  (global-set-key (kbd "C-c r") 'vr/query-replace)
 #+end_src
 
 ** File finding and iBuffer
@@ -54,7 +54,7 @@ lets you decide to replace per match.
   (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
   (global-set-key (kbd "C-x C-p") 'find-file-at-point)
   (global-set-key (kbd "C-c y") 'bury-buffer)
-  (global-set-key (kbd "C-c r") 'revert-buffer)
+  (global-set-key (kbd "C-c R") 'revert-buffer)
   (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
   (global-set-key (kbd "C-x C-b") 'ibuffer)
   (global-set-key (kbd "C-x f") 'recentf-ido-find-file)  
