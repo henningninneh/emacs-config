@@ -240,3 +240,4 @@ Prevent auto-revert-mode from clogging the minibuffer mit status messages
 #+begin_src emacs-lisp
 (setq auto-revert-verbose nil)
 #+end_src
+
