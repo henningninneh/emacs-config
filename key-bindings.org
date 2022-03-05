@@ -354,29 +354,33 @@ By default C-z is bound to "Suspend Frame", which minimizes Emacs. Bind it to "U
   (global-set-key (kbd "H-S-n") 'mc/mark-more-like-this-extended)
   (global-set-key (kbd "H-S-a") 'mc/mark-all-in-region)
 #+end_src
+
 ** Use `M-e` for sentence-level navigation, 
 
 ... but without having to put two spaces after a period.
-#+BEGIN_SRC emacs-lisp
+
+#+begin_src emacs-lisp
 (setq sentence-end-double-space nil)
-#+END_SRC emacs-lisp
+#+end_src
 
 ** Add keybindings for commenting regions of text
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
-#+END_SRC emacs-lisp
+#+end_src
 
 ** Mark whole buffer
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (global-set-key (kbd "M-A") 'mark-whole-buffer)
-#+END_SRC emacs-lisp
+#+end_src
 
 ** Make features available for other routines
+
 #+begin_src emacs-lisp 
 (provide 'key-bindings)
 #+end_src
+
 ** Use emacs everywhere
 Invoke the emacs by shortcut. A new Emacs frame will appear,
 within which you can type away to your heart’s content. It will
@@ -388,6 +392,7 @@ On Linux, ensure you have the following dependencies satisfied: xclip,
 xdotool, xprop, and xwininfo.
 
 See https://github.com/tecosaur/emacs-everywhere
+
 ** Message
 #+begin_src emacs-lisp
   (message "Key Bindings and Usability Features loaded.")
