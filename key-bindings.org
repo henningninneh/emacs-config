@@ -365,7 +365,12 @@ By default C-z is bound to "Suspend Frame", which minimizes Emacs. Bind it to "U
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
-(global-set-key (kbd "M-'") 'comment-or-uncomment-region)
+#+END_SRC emacs-lisp
+
+** Mark whole buffer
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-A") 'mark-whole-buffer)
 #+END_SRC emacs-lisp
 
 ** Make features available for other routines
