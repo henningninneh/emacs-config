@@ -33,3 +33,5 @@ session\\..*
 /transient/
 /session.*
 *.rel
+/eww-bookmarks
+/url/cache/
