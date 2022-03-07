@@ -117,3 +117,11 @@ auto-align enabled.
   (add-hook 'csv-mode-hook 'stripe-buffer-mode)
 #+end_src
 
+* Google Translate workaround
+See this issue:
+https://github.com/atykhonov/google-translate/issues/138
+
+#+begin_src emacs-lisp 
+ (defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130))
+ (setq google-translate-backend-method 'curl)
+#+end_src

@@ -151,6 +151,28 @@ Autocompletion with yas snippets and company-mode.
 #+BEGIN_SRC emacs-lisp
 (org-babel-load-file "~/.emacs.d/statistics.org")
 #+END_SRC
+** eww 
+Eww is a great browser if you want to focus on the essentials and
+don't wan ads. The following code (requires Emacs version >= 25.1)
+disables images and proportional fonts by default. Font toggling is
+bound to F by default, so I is for toggling images. See https://is.gd/QFeTot
+#+begin_src emacs-lisp
+(defun my/eww-toggle-images ()
+  "Toggle whether images are loaded and reload the current page fro cache."
+  (interactive)
+  (setq-local shr-inhibit-images (not shr-inhibit-images))
+  (eww-reload t)
+  (message "Images are now %s"
+           (if shr-inhibit-images "off" "on")))
+
+(define-key eww-mode-map (kbd "I") #'my/eww-toggle-images)
+(define-key eww-link-keymap (kbd "I") #'my/eww-toggle-images)
+
+;; minimal rendering by default
+(setq-default shr-inhibit-images t)   ; toggle with `I`
+(setq-default shr-use-fonts nil)      ; toggle with `F`
+#+end_src
+
 ** Miscellaneous
 #+BEGIN_SRC emacs-lisp
 (org-babel-load-file "~/.emacs.d/mode-config.org")
