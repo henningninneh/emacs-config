@@ -158,6 +158,8 @@ disables images and proportional fonts by default. Font toggling is
 bound to F by default, so I is for toggling images. See
 https://is.gd/QFeTot
 
+Useful minor-mode: eww-readable ("R" key) gets rid of menus etc.
+
 #+begin_src emacs-lisp
 (defun my/eww-toggle-images ()
   "Toggle whether images are loaded and reload the current page fro cache."

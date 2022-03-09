@@ -110,7 +110,8 @@ Somehow, the truncation doesn't work.
     ;; buffer-local, so this should not affec dired-buffers
     (add-hook 'dired-sidebar-mode-hook
               (lambda () 
-                (setq truncate-lines t)))
+                (setq truncate-lines t)
+              (visual-line-mode -1)))
     :config
     (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
     (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
