@@ -78,6 +78,15 @@
                                  (local-set-key "\C-cb" 'ebib-insert-bibtex-key)))
 #+end_src
 
+* ebib
+Open pfd files with the default application.
+
+#+begin_src emacs-lisp
+
+  (setq ebib-file-associations '(("pdf" . "xdg-open")))
+
+#+end_src
+
 * AucTeX 
 ** Automatic Parsing
 #+begin_src emacs-lisp

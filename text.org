@@ -86,7 +86,7 @@ Align keybindings with org-mode
 #+RESULTS:
 | (lambda nil (local-set-key (kbd <M-right>) 'markdown-demote) (local-set-key (kbd <M-left>) 'markdown-promote) (local-set-key (kbd <M-up>) 'markdown-move-up) (local-set-key (kbd <M-down>) 'markdown-move-down)) | pandoc-mode | turn-off-auto-fill | turn-on-flyspell |
 
-** TODO Live preview in markdown app
+** Live preview in markdown app (disabled)
 
 Either find a Marked.app replacement for Linux or change to preview in browser
 
@@ -106,6 +106,17 @@ Either find a Marked.app replacement for Linux or change to preview in browser
 
   (add-hook 'markdown-mode-hook 'latex-unicode-simplified)
 
+#+end_src
+
+** Live preview in Emacs (eww)
+
+Allows live-preview of rendered markdown in separate browser buffer.
+The paths need to be adapted to the local system.
+Toggle with C-C-l
+
+#+begin_src emacs-lisp
+  (setq markdown-command '"pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+smart -w html --template=/home/henning/.pandoc/templates/html.template --css=/home/henning/.pandoc/marked/kultiad-serif.css --filter pandoc-citeproc --csl=/home/henning/.pandoc/csl/chicago-syllabus.csl --bibliography=/home/henning/cloud/misc/references.bib")
+  (setq markdown-command-needs-filename t)
 #+end_src
 
 * CSV mode

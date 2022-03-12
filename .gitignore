@@ -35,3 +35,7 @@ session\\..*
 *.rel
 /eww-bookmarks
 /url/cache/
+games/tetris
+url/cookies
+games\\/tetris-scores
+url\\/cookies
