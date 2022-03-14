@@ -39,3 +39,5 @@ games/tetris
 url/cookies
 games\\/tetris-scores
 url\\/cookies
+*tetris*
+*cookies*

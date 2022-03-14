@@ -79,11 +79,13 @@
 #+end_src
 
 * ebib
-Open pfd files with the default application.
+- Open pfd files with the default application
+- Make org-mode aware of links to ebib-entries
 
 #+begin_src emacs-lisp
 
   (setq ebib-file-associations '(("pdf" . "xdg-open")))
+  (require 'org-ebib)
 
 #+end_src
 
