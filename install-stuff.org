@@ -46,6 +46,7 @@ The following packages will be downloaded and installed.
                                 'multiple-cursors
                                 'neotree
                                 'org-caldav
+                                'org-reveal
                                 'ob-ipython
 				'ob-html-chrome
 				'ob-translate
