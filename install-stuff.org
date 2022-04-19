@@ -46,7 +46,7 @@ The following packages will be downloaded and installed.
                                 'multiple-cursors
                                 'neotree
                                 'org-caldav
-                                'org-reveal
+                                'ox-reveal
                                 'ob-ipython
 				'ob-html-chrome
 				'ob-translate
@@ -75,7 +75,7 @@ The following packages will be downloaded and installed.
                                 'auctex
                                 'ess
                                 'r-autoyas
-                                'undo-tree
+                                'unfill
                                 'vscode-icon 
                                 'wc-goal-mode
                                 )

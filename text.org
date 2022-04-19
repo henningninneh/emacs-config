@@ -83,9 +83,6 @@ Align keybindings with org-mode
    (local-set-key (kbd "<M-down>") 'markdown-move-down)))
 #+end_src
 
-#+RESULTS:
-| (lambda nil (local-set-key (kbd <M-right>) 'markdown-demote) (local-set-key (kbd <M-left>) 'markdown-promote) (local-set-key (kbd <M-up>) 'markdown-move-up) (local-set-key (kbd <M-down>) 'markdown-move-down)) | pandoc-mode | turn-off-auto-fill | turn-on-flyspell |
-
 ** Live preview in markdown app (disabled)
 
 Either find a Marked.app replacement for Linux or change to preview in browser
@@ -111,11 +108,20 @@ Either find a Marked.app replacement for Linux or change to preview in browser
 ** Live preview in Emacs (eww)
 
 Allows live-preview of rendered markdown in separate browser buffer.
-The paths need to be adapted to the local system.
-Toggle with C-C-l
+The paths need to be adapted to the local system. Requires pandoc with
+pandoc-citeproc and pandoc-crossref
 
-#+begin_src emacs-lisp
+Toggle with C-c C-c l
+
+*** Version for Syllabus
+#+begin_src emacs-lisp :tangle no
   (setq markdown-command '"pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+smart -w html --template=/home/henning/.pandoc/templates/html.template --css=/home/henning/.pandoc/marked/kultiad-serif.css --filter pandoc-citeproc --csl=/home/henning/.pandoc/csl/chicago-syllabus.csl --bibliography=/home/henning/cloud/misc/references.bib")
+  (setq markdown-command-needs-filename t)
+#+end_src
+
+*** Version for Papers
+#+begin_src emacs-lisp :tangle yes
+  (setq markdown-command '"pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+smart -w html --template=/home/henning/.pandoc/templates/html.template --css=/home/henning/.pandoc/marked/kultiad-serif.css -F pandoc-crossref -F pandoc-citeproc --csl=/home/henning/.pandoc/csl/chicago-author-date.csl --bibliography=/home/henning/cloud/misc/references.bib")
   (setq markdown-command-needs-filename t)
 #+end_src
 
@@ -154,3 +160,16 @@ In CSV mode, the following commands are available:
 #+begin_src emacs-lisp
   (message "Text config loaded.")
 #+end_src
+
+* Unfill paragraph
+Functions providing the inverse of Emacs' fill-paragraph and
+fill-region
+Usage:
+- M-x unfill-region
+- M-x unfill-paragraph
+- M-x unfill-toggle
+
+#+begin_src emacs-lisp
+(local-set-key (kbd "<f6>") 'unfill-region)
+#+end_src
+
