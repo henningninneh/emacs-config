@@ -99,7 +99,12 @@
 ** Generate pdf
 
 #+begin_src emacs-lisp 
-      (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
+  (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
+#+end_src
+
+** Configure Viewer
+#+begin_src emacs-lisp 
+  (setq TeX-view-program-selection '((output-pdf "zathura")))
 #+end_src
 
 ** Configure Biber
