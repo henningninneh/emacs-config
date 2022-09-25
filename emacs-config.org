@@ -14,6 +14,10 @@ NOTE: Automatically installing "use-package" does not seem to work The
 corresponding section is therefore deactivated. Instead, you need to
 install "use package" manually for this configuration to work.
 
+All-the-icons displays nifty icons next to filenames. It requires
+certain fonts to be installed. Just run M-x
+all-the-icons-install-fonts after the first run.
+
 The configuration is a strongly based on a "manual fork" from
 [[https://github.com/kjhealy/emacs-starter-kit][Kieran Healy's starter kit for the social sciences]].
 
@@ -43,7 +47,8 @@ Set up several emacs package repositories.
   (setq package-archives '(("melpa"     . "https://melpa.org/packages/")
 			   ("org"       . "https://orgmode.org/elpa/")
 			   ("gnu"       . "https://elpa.gnu.org/packages/")
-			   ("marmalade" . "https://marmalade-repo.org/packages/")))
+;			   ("marmalade" . "https://marmalade-repo.org/packages/") ; defunct
+))
   (package-initialize)
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") ; fixes "incomprehensible buffer" error
 #+END_SRC
