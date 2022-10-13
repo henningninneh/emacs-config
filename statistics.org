@@ -30,6 +30,9 @@ markdown. The quarto-mode package will associate a quarto polymode to
 associated with the quarto polymode. This is described here:
 https://github.com/quarto-dev/quarto-emacs
 
+M-x quarto-preview start a quarto preview server that renders the
+document live, watching for changes.
+
 #+begin_src emacs-lisp
   (require 'quarto-mode)
 #+end_src
