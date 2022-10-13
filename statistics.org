@@ -23,6 +23,17 @@ R snippets within markdown or org-mode.
   (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 #+end_src
 
+** Quarto-Mode
+A mode for editing quarto documents, which are a generalization of R
+markdown. The quarto-mode package will associate a quarto polymode to
+.qmd files, so there is no actual quarto mode. Other file types can be
+associated with the quarto polymode. This is described here:
+https://github.com/quarto-dev/quarto-emacs
+
+#+begin_src emacs-lisp
+  (require 'quarto-mode)
+#+end_src
+
 ** Smart underscore
 #+begin_src emacs-lisp
   (define-key ess-r-mode-map "_" #'ess-insert-assign)
