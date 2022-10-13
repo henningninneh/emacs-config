@@ -60,6 +60,7 @@ The following packages will be downloaded and installed.
                                 'poly-org
                                 'pos-tip
                                 'powerline
+                                'quarto-mode
                                 'jedi
                                 'smartparens 
                                 'smex
