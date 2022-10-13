@@ -255,3 +255,8 @@ Prevent auto-revert-mode from clogging the minibuffer mit status messages
       )))
 (define-key global-map (kbd "C-c t") 'transparency)
 #+end_src
+* Show non-matching parents
+#+begin_src emacs-lisp
+(show-paren-mode)
+#+end_src
+
