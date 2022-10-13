@@ -77,6 +77,11 @@ No need to constantly hit g.
 (add-hook 'dired-mode-hook 'auto-revert-mode)
  #+end_src
 
+** Truncate long lines rather than wrap them in dired
+#+begin_src emacs-lisp
+(add-hook 'dired-mode-hook 'toggle-truncate-lines)
+#+end_src
+
 * Pandoc config 
 A pandoc menu for markdown and tex files. 
 

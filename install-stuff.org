@@ -32,6 +32,7 @@ The following packages will be downloaded and installed.
                                 'elgrep
                                 'emacs-everywhere
                                 'emmet-mode
+                                'ess-view-data
                                 'expand-region
                                 'exec-path-from-shell
                                 'figlet

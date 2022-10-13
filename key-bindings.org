@@ -176,6 +176,17 @@ Swap frame arrangements: M-x- ...
 (global-set-key (kbd "C-x M-M") (lambda () (interactive) (shell t)))
 #+end_src
 
+** Eshell bindings for command history
+#+begin_src emacs-lisp 
+(add-hook 'eshell-mode-hook
+          '(lambda ()
+             (define-key eshell-mode-map "<M-up>"
+                         'eshell-previous-matching-input-from-input))) ;; Search backwards through input history for match for current input.
+#+end_src
+
+#+RESULTS:
+| (lambda nil (define-key eshell-mode-map \274up> 'eshell-previous-matching-input-from-input)) | (lambda nil (define-key eshell-mode-map \365p 'eshell-previous-matching-input-from-input)) | (lambda nil (define-key eshell-mode-map  'eshell-bol)) | tramp-eshell-directory-change | ess-r-package-activate-directory-tracker |
+
 ** Smex replaces M-x
     Smex replaces M-x, and is built on top of ido-mode. See
     http://github.com/nonsequitur/smex or
