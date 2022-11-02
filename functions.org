@@ -45,6 +45,7 @@
         (find-file (cdr (assoc filename 
                                file-assoc-list)))))) 
 #+end_src
+
 * Lore, ipsum generator
 
 #+begin_src emacs-lisp 
@@ -62,4 +63,16 @@
 
 #+begin_src emacs-lisp
   (message "Custom Function definitions loaded.")
+#+end_src
+
+* Open file in current buffer as root
+
+#+begin_src emacs-lisp
+(defun sudo-find-file (file)
+  "Open FILE as root."
+  (interactive
+   (list (read-file-name "Open as root: ")))
+  (find-file (if (file-writable-p file)
+                 file
+               (concat "/sudo:root@localhost:" file))))
 #+end_src

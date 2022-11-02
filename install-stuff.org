@@ -24,6 +24,7 @@ The following packages will be downloaded and installed.
                                 'dired-single
                                 'dired-toggle-sudo
                                 'dired-sidebar
+                                'dired-rainbow
                                 'dired-quick-sort
                                 'dracula-theme
                                 'draft-mode
