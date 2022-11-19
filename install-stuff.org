@@ -69,6 +69,7 @@ The following packages will be downloaded and installed.
                                 'solarized-theme
                                 'stripe-buffer
                                 'tango-2-theme
+                                'titlecase
                                 'typo
                                 'visual-regexp
                                 'yaml-mode
