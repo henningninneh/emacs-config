@@ -8,7 +8,7 @@
 
 * More colors in dired
 For different file types
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
 (use-package dired-rainbow
   :config
   (progn

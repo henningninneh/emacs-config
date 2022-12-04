@@ -37,12 +37,6 @@ document live, watching for changes.
   (require 'quarto-mode)
 #+end_src
 
-** Smart underscore
-#+begin_src emacs-lisp
-  (define-key ess-r-mode-map "_" #'ess-insert-assign)
-  (define-key inferior-ess-r-mode-map "_" #'ess-insert-assign)
-#+end_src
-
 ** Shift-enter in ESS
  Shift-enter splits window & launches R, executes
  region, or executes line.

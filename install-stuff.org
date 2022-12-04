@@ -33,6 +33,7 @@ The following packages will be downloaded and installed.
                                 'elgrep
                                 'emacs-everywhere
                                 'emmet-mode
+				'ess-smart-underscore
                                 'ess-view-data
                                 'expand-region
                                 'exec-path-from-shell
