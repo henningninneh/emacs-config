@@ -37,7 +37,7 @@ For different file types
 * Open files with xdg-open (standard desktop apps) in Dired
 Just hit C-c o
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
 (defun dired-open-file ()
   "In dired, open the file named on this line."
   (interactive)
