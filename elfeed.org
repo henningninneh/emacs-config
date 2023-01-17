@@ -8,6 +8,7 @@
 *** [[http://www.jepp-online.com/feed/][JEPP Online]]
 ** blogs
 *** [[https://netzpolitik.org/feed][netzpolitik.org]]
+*** [[http://doingbayesiandataanalysis.blogspot.com/feeds/posts/default][doing bayesian data analysis]]
 ** journals
 *** [[https://www.cogitatiopress.com/politicsandgovernance/gateway/plugin/WebFeedGatewayPlugin/atom][Politics & Governance]]
 *** [[https://ejpr.onlinelibrary.wiley.com/feed/14756765/most-recent][EJPR]]
