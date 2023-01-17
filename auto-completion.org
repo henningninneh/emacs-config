@@ -21,13 +21,6 @@ C-o. Press M-(digit) to quickly complete with one of the first 10
 candidates.
 
 * Yasnippet
-** Hooks
-
-#+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook #'yas-minor-mode)
-  (add-hook 'markdown-mode-hook #'yas-minor-mode)
-#+end_src
-
 ** Tweaking yasnippet's behavior
 
 #+begin_src emacs-lisp
