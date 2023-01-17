@@ -32,6 +32,7 @@ The following packages will be downloaded and installed.
                                 'ein
                                 'elgrep
                                 'elfeed
+                                'elfeed-org
                                 'emacs-everywhere
                                 'emmet-mode
 				'ess-smart-underscore
