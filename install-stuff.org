@@ -31,8 +31,11 @@ The following packages will be downloaded and installed.
                                 'ebib
                                 'ein
                                 'elgrep
+<<<<<<< HEAD
                                 'elfeed
                                 'elfeed-org
+=======
+>>>>>>> parent of d189cf2 (added yas to some modes, installed elfeed-org feedreader)
                                 'emacs-everywhere
                                 'emmet-mode
 				'ess-smart-underscore
