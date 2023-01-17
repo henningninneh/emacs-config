@@ -31,7 +31,7 @@ The following packages will be downloaded and installed.
                                 'ebib
                                 'ein
                                 'elgrep
-                                'elfeed-org
+                                'elfeed
                                 'emacs-everywhere
                                 'emmet-mode
 				'ess-smart-underscore

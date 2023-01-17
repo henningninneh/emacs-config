@@ -184,21 +184,6 @@ Useful minor-mode: eww-readable ("R" key) gets rid of menus etc.
 (setq-default shr-use-fonts nil)      ; toggle with `F`
 #+end_src
 
-** elfeed-org
-elfeed is an RSS/atom feed-reader for emacs. elfeed-org allows
-configuration via org-files.
-
-#+begin_src emacs-lisp
-;; Load elfeed-org
-(require 'elfeed-org)
-
-;; Initialize elfeed-org
-;; This hooks up elfeed-org to read the configuration when elfeed
-;; is started with =M-x elfeed=
-(elfeed-org)
-#+end_src
-
-
 ** Miscellaneous
 #+BEGIN_SRC emacs-lisp
 (org-babel-load-file "~/.emacs.d/mode-config.org")

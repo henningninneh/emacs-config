@@ -1,15 +1,15 @@
-* Imported Feeds            :elfeed:
-** Call for Papers and Applications
+* feeds :elfeed:
+** call for papers and applications                                     :cfp:
 *** [[https://www.ipsa.org/latest-news-2/rss.xml][Latest IPSA News]]
 *** [[https://www.ipsa.org/call-for-papers/rss.xml][IPSA News]]
 *** [[http://rc03.ipsa.org/feed/rss2][ISA RC03]]
-** polsci blogs
-*** [[https://verfassungsblog.de/feed/][Verfassungsblog]]
-*** [[http://www.jepp-online.com/feed/][JEPP Online]]
-** blogs
-*** [[https://netzpolitik.org/feed][netzpolitik.org]]
-*** [[http://doingbayesiandataanalysis.blogspot.com/feeds/posts/default][doing bayesian data analysis]]
-** journals
+** blogs                                                               :blog:
+*** [[https://verfassungsblog.de/feed/][Verfassungsblog]] :law:
+*** [[http://www.jepp-online.com/feed/][JEPP Online]] :polsci:
+*** [[https://www.regioparl.com/rss][Regioparl]] :polsci:
+*** [[https://netzpolitik.org/feed][netzpolitik.org]] :digital:news:
+*** [[http://doingbayesiandataanalysis.blogspot.com/feeds/posts/default][doing bayesian data analysis]] :method:
+** journals                                                         :journal:
 *** [[https://www.cogitatiopress.com/politicsandgovernance/gateway/plugin/WebFeedGatewayPlugin/atom][Politics & Governance]]
 *** [[https://ejpr.onlinelibrary.wiley.com/feed/14756765/most-recent][EJPR]]
 *** [[https://ejpr.onlinelibrary.wiley.com/feed/20478852/most-recent][PolDataYearbook]]
@@ -46,4 +46,4 @@
 *** [[https://www.cambridge.org/core/rss/product/id/146C8B1E6606CE283EBC5B10B255F4C0][IO]]
 *** [[https://journals.sagepub.com/action/showFeed?ui=0&mi=ehikzz&ai=2b4&jc=ipsa&type=axatoc&feed=rss][IPSR]]
 ** news
-*** [[https://us12.campaign-archive.com/feed?u=149499106c3f4d0d4f6cf75c5&id=8f318ca8da][EUobserver Newsletter Archive Feed]]
+*** [[https://us12.campaign-archive.com/feed?u=149499106c3f4d0d4f6cf75c5&id=8f318ca8da][EUobserver Newsletter Archive Feed]] :news:
