@@ -305,3 +305,12 @@ Alternative:
 #+begin_src emacs-lisp tangle: yes
 (show-smartparens-mode)
 #+end_src
+* Show full path in minibuffer
+#+begin_src emacs-lisp
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
+
+(global-set-key (kbd "C-x p") 'show-file-name)
+#+end_src
