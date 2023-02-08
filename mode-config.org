@@ -120,6 +120,7 @@ auto-align enabled.
   (add-hook 'csv-mode-hook 'csv-align-mode)
   (add-hook 'csv-mode-hook (lambda () (visual-line-mode -1)))
   (add-hook 'csv-mode-hook 'stripe-buffer-mode)
+  (add-hook 'csv-mode-hook 'toggle-truncate-lines)
 #+end_src
 
 * Google Translate workaround
