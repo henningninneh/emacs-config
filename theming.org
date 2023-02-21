@@ -314,3 +314,15 @@ Alternative:
 
 (global-set-key (kbd "C-x p") 'show-file-name)
 #+end_src
+* Emoji 🐸
+#+begin_src emacs-lisp g
+(use-package emojify
+  :config
+  (when (member "Noto Color Emoji" (font-family-list))
+    (set-fontset-font
+     t 'symbol (font-spec :family "Noto Color Emoji") nil 'prepend))
+  (setq emojify-display-style 'unicode)
+  (setq emojify-emoji-styles '(unicode))
+  (bind-key* (kbd "C-c .") #'emojify-insert-emoji)) ; override binding in any mode
+#+end_src
+

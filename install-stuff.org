@@ -21,6 +21,7 @@ The following packages will be downloaded and installed.
                                 'css-mode
                                 'csv-mode
                                 'elpy
+                                'emojify
                                 'dired-single
                                 'dired-toggle-sudo
                                 'dired-sidebar
