@@ -1,12 +1,117 @@
 #+TITLE: Spell-checking settings
 
-You might have to install the package aspell-de (with your system
-package tool, not from Emacs) for the German dictionary to work
-without Flyspell throwing an error, e.g. apt-get aspell_de
+- iSpell is Emacs' main spell-checker.
+- FlySpell runs spell-checking on the fly
+- Aspell is an alternative back-end for iSpell/FlySpell
+- Hunspell is yet another alternative back-end for iSpell/FlySpell
 
-* Aspell
+If you use Aspell, you might have to install the package aspell-de
+(with your system package tool, not from Emacs) for the German
+dictionary to work without Flyspell throwing an error, e.g. apt
+install aspell_de
 
-We use aspell instead of the emacs-default ispell for general
+My suggestion is to use Hunspell, however. Hunspell is also used by
+Firefox and LibreOffice. We configure it to run with multiple
+dictionaries. M-x flyspell-mode highlights all misspelled words. M-$,
+checks the spelling of the word at point. M-x ispell-buffer checks the
+whole buffer.
+
+Hunspell might have to be installed first as well, e.g. apt-install
+apt install hunspell hunspell-de-de hunspell-en-gb hunspell-en-us
+hunspell-de-ch etc.
+
+See https://github.com/munen/emacs.d/#flyspell
+
+* Flyspell
+
+We use flyspell for spell checking on the fly.
+
+#+begin_src emacs-lisp :tangle yes
+(require 'flyspell)
+  (setq ispell-program-name "aspell"
+        ispell-dictionary "english"
+        ispell-dictionary-alist
+        (let ((default '("[A-Za-z]" "[^A-Za-z]" "[']" nil
+                         ("-B" "-d" "english")
+                         nil iso-8859-1)))
+          `((nil ,@default)
+            ("english" ,@default))))
+  (setq ispell-extra-args '("--sug-mode=ultra"))
+;  (setq ispell-personal-dictionary "~/.aspell.en.pws")
+;  (setq flyspell-issue-message-flag nil)
+#+end_src
+
+Do not order not by the default of alphabetical ordering.
+
+#+begin_src emacs-lisp :tangle yes
+  (setq flyspell-sort-corrections nil)
+#+end_src
+
+When checking the entire buffer, don’t print messages for every word.
+This is a major performance gain.
+
+#+begin_src emacs-lisp :tangle yes
+  (setq flyspell-issue-message-flag nil)
+#+end_src
+
+Reload flyspell after changing the ispell dictionary. Deactivated
+because it results in an error "void-variable
+flyspell-delayed-commands" after restarting emacs twice....
+
+#+begin_src emacs-lisp :tangle no
+(defun restart-flyspell-mode ()
+  (when flyspell-mode
+    (flyspell-mode-off)
+    (flyspell-mode-on)))
+(add-hook 'ispell-change-dictionary-hook 'restart-flyspell-mode)
+#+end_src
+
+Speeding up flyspell on the Mac, see
+http://www.brool.com/index.php/speeding-up-flyspell-region
+
+Deactived by default.
+
+#+begin_src emacs-lisp :tangle no
+  (defadvice flyspell-region (around fast-flyspell-region)
+    (cl-flet ( (sit-for (x) t) ) 
+      ad-do-it))
+   (ad-activate 'flyspell-region)
+#+end_src
+
+#+begin_src emacs-lisp
+  (message "flyspell settings loaded.")
+#+end_src
+* Hunspell
+
+Use Hunspell as spell-checking back-end and configure it for multiple
+languages. See dependencies above.
+
+#+begin_src emacs-lisp :tangle yes
+(with-eval-after-load "ispell"
+  ;; Configure `LANG`, otherwise ispell.el cannot find a 'default
+  ;; dictionary' even though multiple dictionaries will be configured
+  ;; in next line.
+  (setenv "LANG" "en_US.UTF-8")
+  (setq ispell-program-name "hunspell")
+  ;; Configure German, Austrian German, and two variants of English.
+  (setq ispell-dictionary "de_DE,de_AT,en_GB,en_US")
+  ;; ispell-set-spellchecker-params has to be called
+  ;; before ispell-hunspell-add-multi-dic will work
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "de_DE,de_AT,en_GB,en_US")
+  ;; For saving words to the personal dictionary, don't infer it from
+  ;; the locale, otherwise it would save to ~/.hunspell_de_DE.
+  (setq ispell-personal-dictionary "~/.hunspell_personal"))
+
+;; The personal dictionary file has to exist, otherwise hunspell will
+;; silently not use it.
+(unless (file-exists-p ispell-personal-dictionary)
+        (write-region "" nil ispell-personal-dictionary nil 0))
+#+end_src
+
+* Aspell (deactivated)
+
+If activated, we use aspell instead of the emacs-default ispell for general
 spell-checking. Unlike Ispell, Aspell can easily check UTF-8 documents
 without having to use a special dictionary. Aspell will also do its
 best to respect the current locale setting. Other advantages over
@@ -14,7 +119,7 @@ Ispell include support for using multiple dictionaries at once and
 intelligently handling personal dictionaries when more than one Aspell
 process is open at once.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
   (setq ispell-program-name "aspell"
        ispell-dictionary "english"
        ispell-dictionary-alist
@@ -23,7 +128,11 @@ process is open at once.
                         nil iso-8859-1)))
          `((nil ,@default)
            ("english" ,@default))))
+#+end_src
 
+* Ignore LaTeX commands in tex files
+
+#+begin_src emacs-lisp :tangle yes
      ;; ispell --- make ispell skip \citep, \citet etc in .tex files.
      (setq ispell-tex-skip-alists
      '((("%\\[" . "%\\]") ; AMStex block comment...
@@ -50,49 +159,3 @@ process is open at once.
      ("verbatim\\*?"        . "\\\\end[ \t\n]*{[ \t\n]*verbatim\\*?[ \t\n]*}"))))
 #+end_src
 
-* Flyspell
-
-We use flyspell for spell checking on the fly.
-
-#+BEGIN_SRC emacs-lisp
-(require 'flyspell)
-  (setq ispell-program-name "aspell"
-        ispell-dictionary "english"
-        ispell-dictionary-alist
-        (let ((default '("[A-Za-z]" "[^A-Za-z]" "[']" nil
-                         ("-B" "-d" "english")
-                         nil iso-8859-1)))
-          `((nil ,@default)
-            ("english" ,@default))))
-  (setq ispell-extra-args '("--sug-mode=ultra"))
-;  (setq ispell-personal-dictionary "~/.aspell.en.pws")
-;  (setq flyspell-issue-message-flag nil)
-#+END_SRC
-
-Reload flyspell after changing the ispell dictionary. Deactivated
-because it results in an error "void-variable
-flyspell-delayed-commands" after restarting emacs twice....
-
-#+begin_src emacs-lisp :tangle no
-(defun restart-flyspell-mode ()
-  (when flyspell-mode
-    (flyspell-mode-off)
-    (flyspell-mode-on)))
-(add-hook 'ispell-change-dictionary-hook 'restart-flyspell-mode)
-#+end_src
-
-Speeding up flyspell on the Mac, see
-http://www.brool.com/index.php/speeding-up-flyspell-region
-
-Deactived by default.
-
-#+BEGIN_SRC emacs-lisp tangle:no
-  (defadvice flyspell-region (around fast-flyspell-region)
-    (cl-flet ( (sit-for (x) t) ) 
-      ad-do-it))
-   (ad-activate 'flyspell-region)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (message "flyspell settings loaded.")
-#+END_SRC
