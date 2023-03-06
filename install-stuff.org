@@ -47,6 +47,7 @@ The following packages will be downloaded and installed.
                                 'idle-highlight-mode
                                 'latex-pretty-symbols
                                 'logview
+                                'ligature
                                 'magit
                                 'markdown-mode
                                 'multiple-cursors

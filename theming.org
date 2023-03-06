@@ -81,7 +81,7 @@ Adding icons to dired:
 #+begin_src emacs-lisp 
 
   (setq
-   default-frame-alist '((font . "JetBrains Mono 10"))
+   default-frame-alist '((font . "Berkeley Mono 10"))
    frame-title-format '(buffer-file-name "%f" ("%b"))
    visible-bell 't 
    echo-keystrokes 0.1
@@ -105,6 +105,35 @@ Adding icons to dired:
   (set-terminal-coding-system 'utf-8)
   (set-keyboard-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
+#+end_src
+
+* Font Ligatures
+
+Requires Emacs Major Version higher than 27.
+
+Not all modes where you want code ligatures may derive from prog-mode,
+so you may also want to call ligature-set-ligatures with other modes
+(e.g. html-mode).
+
+See https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
+
+#+begin_src emacs-lisp
+;; Enable the www ligature in every possible major mode
+(ligature-set-ligatures 't '("www"))
+
+;; Enable ligatures in programming modes                                                           
+(ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                                     ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                                     "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                                     "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
+                                     "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
+                                     "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
+                                     "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
+                                     "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
+                                     "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
+                                     "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
+
+(global-ligature-mode 't)
 #+end_src
 
 * Default Browser

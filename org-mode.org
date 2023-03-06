@@ -131,6 +131,7 @@ Make org-babel use the right python version/command:
 #+begin_src emacs-lisp
 (require 'ox-md)
 #+end_src emacs-lisp
+
 * Auto completion
 
 #+begin_src emacs-lisp
